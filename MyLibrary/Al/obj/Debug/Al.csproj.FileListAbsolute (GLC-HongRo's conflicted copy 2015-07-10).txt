@@ -1,6 +1,0 @@
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe.config
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.pdb
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.exe
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.pdb
-C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Al.csprojResolveAssemblyReference.cache
