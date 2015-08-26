@@ -1,0 +1,13 @@
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe.config
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.pdb
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.exe
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.pdb
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe.config
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.exe
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Algorithm\obj\Debug\Algorithm.pdb
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.exe
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Algorithm\bin\Debug\Algorithm.pdb
+C:\GitHub\MyRepository\MyLibrary\Al\bin\Debug\Algorithm.exe.config
+C:\GitHub\MyRepository\MyLibrary\Al\obj\Debug\Algorithm.exe
+C:\GitHub\MyRepository\MyLibrary\Al\obj\Debug\Algorithm.pdb

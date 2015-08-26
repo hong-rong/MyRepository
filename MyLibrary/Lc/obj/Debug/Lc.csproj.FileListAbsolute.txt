@@ -1,0 +1,8 @@
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc\bin\Debug\Lc.dll
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc\bin\Debug\Lc.pdb
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc\obj\Debug\Lc.dll
+C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc\obj\Debug\Lc.pdb
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc\bin\Debug\Lc.dll
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc\bin\Debug\Lc.pdb
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc\obj\Debug\Lc.dll
+C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc\obj\Debug\Lc.pdb
