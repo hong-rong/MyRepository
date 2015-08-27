@@ -180,7 +180,11 @@ UpgradeLog*.htm
 *.bim_*.settings
 *.orig
 
-bin/
-obj/
-Debug/
-Release/
+bin
+obj
+Debug
+Release
+
+**/bin/Debug/
+**/bin/Release/
+*.pdb
