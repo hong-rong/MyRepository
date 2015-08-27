@@ -16,22 +16,11 @@ namespace Lib.Common.Al.Graph
     /// K	10
     /// L   11
     /// </summary>
-    public class UndirectedGraph
+    public class UndirectedGraph : GraphBase
     {
-        private readonly int _V;
-        private int _E;
-        private LinkedList<int>[] _al;//adjacency list
-
         public UndirectedGraph(int V)
-        {
-            _V = V;
-            _E = 0;
-            _al = new LinkedList<int>[V];
-            for (int i = 0; i < V; i++)
-            {
-                _al[i] = new LinkedList<int>();
-            }
-        }
+            : base(V)
+        { }
 
         public static UndirectedGraph CreateGraph32()
         {
@@ -99,27 +88,12 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
-        public int V
-        {
-            get { return _V; }
-        }
-
-        public int E
-        {
-            get { return _E; }
-        }
-
-        public void AddPath(int u, int v)
+        public override void AddPath(int u, int v)
         {
             _al[u].Add(v);
             _al[v].Add(u);
 
             _E++;
-        }
-
-        public System.Collections.Generic.IEnumerable<int> Adjacent(int v)
-        {
-            return _al[v];
         }
     }
 }

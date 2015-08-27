@@ -10,9 +10,9 @@ namespace Lib.Common.Al.Graph
         private int _componentCount;
         private int _clock;
 
-        private readonly UndirectedGraph _G;
+        private readonly GraphBase _G;
 
-        public Dfs(UndirectedGraph G)
+        public Dfs(GraphBase G)
         {
             _dfsStats = new DfsStats(G.V);
 
@@ -27,7 +27,6 @@ namespace Lib.Common.Al.Graph
             _dfsStats.Visited[v] = true;
 
             _dfsStats.ComponentNum[v] = _componentCount;
-
 
             PreVisitVertice(v);
 
@@ -66,15 +65,6 @@ namespace Lib.Common.Al.Graph
         public override string ToString()
         {
             return _dfsStats.ToString();
-            //var sb = new StringBuilder();
-            //for (var i = 0; i < _G.V; i++)
-            //{
-            //    sb.AppendLine("ComponentNum: " + _dfsStats.ComponentNum[i]);
-            //    sb.AppendLine(string.Format("PreVisit[{0}]: {1}", i, _dfsStats.PreVisit[i]));
-            //    sb.AppendLine(string.Format("PostVisit[{0}]: {1}", i, _dfsStats.PostVisit[i]));
-            //}
-
-            //return sb.ToString();
         }
     }
 }

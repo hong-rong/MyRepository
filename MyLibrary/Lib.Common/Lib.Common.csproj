@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Al\GeneralAlgorithm.cs" />
+    <Compile Include="Al\Graph\DirectedGraph.cs" />
     <Compile Include="Al\Graph\DfsStats.cs" />
     <Compile Include="Al\Graph\Dfs.cs" />
+    <Compile Include="Al\Graph\GraphBase.cs" />
     <Compile Include="Al\Graph\UndirectedGraph.cs" />
     <Compile Include="Ds\Bst\BST.cs" />
     <Compile Include="Ds\Bst\BSTNode.cs" />
