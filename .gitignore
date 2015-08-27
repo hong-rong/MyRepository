@@ -179,3 +179,8 @@ UpgradeLog*.htm
 *.bim.layout
 *.bim_*.settings
 *.orig
+
+bin/
+obj/
+Debug/
+Release/
