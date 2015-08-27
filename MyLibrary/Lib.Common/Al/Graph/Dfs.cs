@@ -32,7 +32,13 @@ namespace Lib.Common.Al.Graph
 
             foreach (var e in _G.Adjacent(v))
                 if (!_dfsStats.Visited[e])
+                {
                     Explore(e);
+                }
+                else if (e < v)//detect back edge, so detect cycle
+                {
+                    Debug.WriteLine(string.Format("Attemp to visit vertice {0} from {1}, but {0} already visited", e, v));
+                }
 
             PostVisitVertice(v);
         }
@@ -40,13 +46,13 @@ namespace Lib.Common.Al.Graph
         private void PreVisitVertice(int v)
         {
             _dfsStats.PreVisit[v] = _clock++;
-            Debug.WriteLine(string.Format("pre[{0}]: {1}", v, _dfsStats.PreVisit[v]));
+            Debug.WriteLine(string.Format("PreVisit[{0}]: {1}", v, _dfsStats.PreVisit[v]));
         }
 
         private void PostVisitVertice(int v)
         {
             _dfsStats.PostVisit[v] = _clock++;
-            Debug.WriteLine(string.Format("post[{0}]: {1}", v, _dfsStats.PostVisit[v]));
+            Debug.WriteLine(string.Format("PostVisit[{0}]: {1}", v, _dfsStats.PostVisit[v]));
         }
 
         public void DepthFirstSearch()

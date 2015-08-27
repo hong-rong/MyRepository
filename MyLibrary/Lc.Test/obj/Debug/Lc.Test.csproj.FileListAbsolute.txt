@@ -20,3 +20,14 @@ C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.dll
 C:\Users\rocorong\Dropbox\coding\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.xml
 C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.dll
 C:\Users\HongRong\Dropbox\coding\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lc.Test.dll
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lc.Test.pdb
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lc.dll
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lib.Common.dll
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lc.pdb
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Lib.Common.pdb
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\obj\Debug\Lc.Test.csprojResolveAssemblyReference.cache
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\obj\Debug\Lc.Test.dll
+C:\GitHub\MyRepository\MyLibrary\Lc.Test\obj\Debug\Lc.Test.pdb
