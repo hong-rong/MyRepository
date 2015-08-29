@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Lib.Common.Ds.Queue;
+using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
@@ -8,6 +9,7 @@ namespace Lib.Common.Al.Graph
         private readonly bool[] _visited;
         private readonly int[] _postVisit;
         private readonly int[] _componentNum;
+        private readonly Queue<int> _linearization;//topological sort
 
         public DfsStats(int V)
         {
@@ -15,6 +17,7 @@ namespace Lib.Common.Al.Graph
             _visited = new bool[V];
             _postVisit = new int[V];
             _componentNum = new int[V];
+            _linearization = new Queue<int>();
         }
 
         public int[] PreVisit
@@ -37,6 +40,11 @@ namespace Lib.Common.Al.Graph
             get { return _componentNum; }
         }
 
+        public Queue<int> Linearization
+        {
+            get { return _linearization; }
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -53,6 +61,12 @@ namespace Lib.Common.Al.Graph
                 sb.AppendLine(string.Format("PostVisit[{0}]: {1}", i, PostVisit[i]));
             }
             sb.AppendLine();
+
+            sb.AppendLine("Linearization(topological sort): ");
+            foreach (var l in _linearization)
+            {
+                sb.AppendLine(string.Format("{0},", l));
+            }
 
             return sb.ToString();
         }

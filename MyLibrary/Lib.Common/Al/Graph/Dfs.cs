@@ -53,6 +53,8 @@ namespace Lib.Common.Al.Graph
         {
             _dfsStats.PostVisit[v] = _clock++;
             Debug.WriteLine(string.Format("PostVisit[{0}]: {1}", v, _dfsStats.PostVisit[v]));
+
+            _dfsStats.Linearization.Enqueue(v);
         }
 
         public void DepthFirstSearch()
