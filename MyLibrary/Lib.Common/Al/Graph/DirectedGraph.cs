@@ -55,6 +55,20 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
+        public static DirectedGraph CreateGraph38()
+        {
+            var g = new DirectedGraph(6);
+
+            g.AddEdge(0, 2);
+            g.AddEdge(1, 0);
+            g.AddEdge(1, 3);
+            g.AddEdge(2, 4);
+            g.AddEdge(2, 5);
+            g.AddEdge(3, 2);
+
+            return g;
+        }
+
         public void ReverseGraph()
         {
             var q = new Queue<Edge>();
@@ -80,7 +94,7 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(int u, int v)
         {
-            _al[u].Add(v);
+            _al[u].AddLast(v);
 
             _E++;
         }

@@ -7,23 +7,21 @@
         /// <summary>
         /// first occurrence
         /// </summary>
-        int IndexOf(T t);
+        int FirstIndexOf(T t);
 
         bool Contains(T t);
 
         int Size();
 
-        /// <summary>
-        /// add item to the end
-        /// </summary>
-        void Add(T t);
+        void AddFirst(T t);
+
+        void AddLast(T t);
 
         void Add(int index, T t);
 
-        /// <summary>
-        /// remove header
-        /// </summary>
-        T Remove();
+        T RemoveFirst();
+
+        T RemoveLast();
 
         /// <summary>
         /// remove item in position index

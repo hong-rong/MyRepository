@@ -1,4 +1,4 @@
-﻿using Lib.Common.Ds.Queue;
+﻿using Lib.Common.Ds.Ll;
 using System.Text;
 
 namespace Lib.Common.Al.Graph
@@ -28,7 +28,7 @@ namespace Lib.Common.Al.Graph
         private readonly System.Collections.Generic.List<Edge> _crossEdges;
         private readonly Color[] _colors;
 
-        private readonly Queue<int> _linearization;//topological sort
+        private readonly LinkedList<int> _linearization;//topological sort
 
         public DfsStats(int V)
         {
@@ -42,7 +42,7 @@ namespace Lib.Common.Al.Graph
             _crossEdges = new System.Collections.Generic.List<Edge>();
             _colors = new Color[V];
 
-            _linearization = new Queue<int>();
+            _linearization = new LinkedList<int>();
         }
 
         public int[] PreVisit
@@ -73,7 +73,7 @@ namespace Lib.Common.Al.Graph
 
         public Color[] Colors { get { return _colors; } }
 
-        public Queue<int> Linearization
+        public LinkedList<int> Linearization
         {
             get { return _linearization; }
         }

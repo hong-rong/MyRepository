@@ -54,7 +54,7 @@ namespace Lib.Common.Al.Graph
         private void PostVisitVertice(int v)
         {
             _dfsStats.PostVisit[v] = _clock++;
-            _dfsStats.Linearization.Enqueue(v);
+            _dfsStats.Linearization.AddFirst(v);
         }
 
         public void DepthFirstSearch()

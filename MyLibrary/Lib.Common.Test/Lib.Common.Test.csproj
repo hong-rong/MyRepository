@@ -47,8 +47,7 @@
     <Compile Include="Ds\Bs\BinarySearchSTTests.cs" />
     <Compile Include="Ds\Bs\BinarySearchTestBase.cs" />
     <Compile Include="Ds\Bs\BinarySearchTests.cs" />
-    <Compile Include="Ds\Ll\LlTestBase.cs" />
-    <Compile Include="Ds\Ll\LlTests.cs" />
+    <Compile Include="Ds\LinkedListTest.cs" />
     <Compile Include="Ds\QueueTests.cs" />
     <Compile Include="Ds\SequentialSearchSTTests.cs" />
     <Compile Include="Ds\StackTests.cs" />

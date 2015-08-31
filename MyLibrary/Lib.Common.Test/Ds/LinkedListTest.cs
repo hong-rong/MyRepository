@@ -4,10 +4,10 @@ using Lib.Common.Ds.Ll;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Lib.Common.Test.Ds.Ll
+namespace Lib.Common.Test.Ds
 {
     [TestClass]
-    public abstract class LlTestBase
+    public class LinkedListTest
     {
         #region ctor
 
@@ -68,15 +68,15 @@ namespace Lib.Common.Test.Ds.Ll
         [TestMethod]
         public void IndexOf_Test()
         {
-            Assert.AreEqual(0, CreateLinkedList().IndexOf(0));
-            Assert.AreEqual(1, CreateLinkedList().IndexOf(1));
-            Assert.AreEqual(2, CreateLinkedList().IndexOf(2));
+            Assert.AreEqual(0, CreateLinkedList().FirstIndexOf(0));
+            Assert.AreEqual(1, CreateLinkedList().FirstIndexOf(1));
+            Assert.AreEqual(2, CreateLinkedList().FirstIndexOf(2));
         }
 
         [TestMethod]
         public void IndexOf_No_Test()
         {
-            Assert.AreEqual(-1, CreateLinkedList().IndexOf(3));
+            Assert.AreEqual(-1, CreateLinkedList().FirstIndexOf(3));
         }
 
         #endregion
@@ -107,26 +107,61 @@ namespace Lib.Common.Test.Ds.Ll
 
         #endregion
 
-        #region Add
+        #region AddFirst
 
         [TestMethod]
-        public void Add_Test()
+        public void AddFirst_Test()
         {
             var list = CreateLinkedList();
-            list.Add(9);
+            list.AddFirst(9);
 
-            Assert.AreEqual(9, list.Get(list.Size() - 1));
+            Assert.AreNotEqual(9, list.Get(list.Size() - 1));
+            Assert.AreEqual(9, list.Get(0));
             Assert.AreEqual(5, list.Size());
         }
 
         [TestMethod]
-        public void Add_Header_Null_Test()
+        public void AddFirst_Header_Null_Test()
         {
             var linkedList = CreateEmptyLinkedList();
 
-            linkedList.Add(9);
-
+            linkedList.AddFirst(9);
             Assert.AreEqual(9, linkedList.Get(0));
+
+            linkedList.AddFirst(11);
+            Assert.AreEqual(11, linkedList.Get(0));
+            Assert.AreEqual(9, linkedList.Get(1));
+        }
+
+        #endregion
+
+        #region AddLast
+
+        [TestMethod]
+        public void AddLast_Test()
+        {
+            var list = CreateLinkedList();
+            list.AddLast(9);
+
+            Assert.AreEqual(9, list.Get(list.Size() - 1));
+            Assert.AreEqual(5, list.Size());
+
+            list.AddLast(11);
+            Assert.AreEqual(11, list.Get(list.Size() - 1));
+            Assert.AreEqual(6, list.Size());
+        }
+
+        [TestMethod]
+        public void AddLast_Header_Null_Test()
+        {
+            var linkedList = CreateEmptyLinkedList();
+
+            linkedList.AddLast(9);
+            Assert.AreEqual(9, linkedList.Get(0));
+
+            linkedList.AddLast(11);
+            Assert.AreEqual(9, linkedList.Get(0));
+            Assert.AreEqual(11, linkedList.Get(1));
         }
 
         #endregion
@@ -146,13 +181,14 @@ namespace Lib.Common.Test.Ds.Ll
 
         #endregion
 
-        #region Remove
+        #region Remove First
 
+        [Ignore]
         [TestMethod]
-        public void Remove_Test()
+        public void RemoveFirst_Test()
         {
             var list = CreateLinkedList();
-            var removed = list.Remove();
+            var removed = list.RemoveFirst();
 
             Assert.AreEqual(0, removed);
             Assert.AreEqual(default(int), list.Get(0));
@@ -259,8 +295,16 @@ namespace Lib.Common.Test.Ds.Ll
             return first;
         }
 
-        protected abstract LinkedList<int> CreateLinkedList();
+        protected virtual LinkedList<int> CreateLinkedList()
+        {
+            var first = CreateNodeHeader();
 
-        protected abstract LinkedList<int> CreateEmptyLinkedList();
+            return new LinkedList<int>(first);
+        }
+
+        protected virtual LinkedList<int> CreateEmptyLinkedList()
+        {
+            return new LinkedList<int>();
+        }
     }
 }

@@ -31,12 +31,23 @@ namespace Lib.Common.Test.Al
         }
 
         [TestMethod]
-        public void DirectedGraph_Explore_Test()
+        public void DirectedGraph37_Explore_Test()
         {
             var g = DirectedGraph.CreateGraph37();
 
             var dfs = new Dfs(g);
-            dfs.DepthFirstSearch();//explore Vertice A
+            dfs.DepthFirstSearch();
+
+            Debug.WriteLine(dfs.ToString());
+        }
+
+        [TestMethod]
+        public void DirectedGraph38_Explore_Test()
+        {
+            var g = DirectedGraph.CreateGraph38();
+
+            var dfs = new Dfs(g);
+            dfs.DepthFirstSearch();
 
             Debug.WriteLine(dfs.ToString());
         }

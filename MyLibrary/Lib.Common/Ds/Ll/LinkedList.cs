@@ -42,7 +42,7 @@ namespace Lib.Common.Ds.Ll
             return current;
         }
 
-        public int IndexOf(T t)
+        public int FirstIndexOf(T t)
         {
             var index = 0;
 
@@ -90,7 +90,20 @@ namespace Lib.Common.Ds.Ll
             return i;
         }
 
-        public void Add(T t)
+        public void AddFirst(T t)
+        {
+            if (Header == null)
+            {
+                Header = new LinkNode<T> { Value = t };
+            }
+            else
+            {
+                LinkNode<T> temp = Header;
+                Header = new LinkNode<T> { Value = t, Next = temp };
+            }
+        }
+
+        public void AddLast(T t)
         {
             var item = new LinkNode<T>() { Value = t };
             var current = GetLastNode();
@@ -112,12 +125,14 @@ namespace Lib.Common.Ds.Ll
             item.Next = next;
         }
 
-        public T Remove()
+        public T RemoveFirst()
         {
-            var node = Header;
-            Header = null;
+            throw new NotImplementedException();
+        }
 
-            return node.Value;
+        public T RemoveLast()
+        {
+            throw new NotImplementedException();
         }
 
         public T Remove(int index)

@@ -90,8 +90,8 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(int u, int v)
         {
-            _al[u].Add(v);
-            _al[v].Add(u);
+            _al[u].AddLast(v);
+            _al[v].AddLast(u);
             _E++;
         }
 
