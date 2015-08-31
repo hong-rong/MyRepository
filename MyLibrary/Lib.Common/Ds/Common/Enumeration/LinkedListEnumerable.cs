@@ -2,9 +2,9 @@
 {
     public class LinkedListEnumerable<TData> : EnumerableEntity<TData>
     {
-        protected LinkNode<TData> First;
+        protected LinkNode<TData> Header;
 
-        private LinkNode<TData> _enumerableItem;
+        protected LinkNode<TData> _enumerableItem;
 
         public override TData Current
         {
@@ -23,7 +23,7 @@
         public override void Reset()
         {
             //this is important!!!
-            _enumerableItem = new LinkNode<TData> { Next = First };
+            _enumerableItem = new LinkNode<TData> { Next = Header };
         }
     }
 }

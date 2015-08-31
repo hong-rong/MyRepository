@@ -77,8 +77,10 @@
     <Compile Include="Ds\Ll\ILinkedList.cs" />
     <Compile Include="Ds\Ll\LinkedList.cs" />
     <Compile Include="Ds\Ll\LinkListMock.cs" />
+    <Compile Include="Ds\Queue\DoubleLinkNode.cs" />
     <Compile Include="Ds\Queue\IQueue.cs" />
     <Compile Include="Ds\Queue\Queue.cs" />
+    <Compile Include="Ds\Queue\QueueEnumerableEntity.cs" />
     <Compile Include="Ds\Stack\IStack.cs" />
     <Compile Include="Ds\Stack\Stack.cs" />
     <Compile Include="Log\CDriveLocationLogger.cs" />

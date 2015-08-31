@@ -6,15 +6,14 @@ using Lib.Common.Ds.Common.Enumeration;
 
 namespace Lib.Common.Ds.Queue
 {
-    public class Queue<T> : LinkedListEnumerable<T>, IQueue<T>
+    public class Queue<T> : QueueEnumerableEntity<T>, IQueue<T>
     {
         private int _n;
-        private LinkNode<T> _last;
 
         public Queue()
         {
             _n = 0;
-            First = null;
+            Header = null;
             _last = null;
         }
 
@@ -22,10 +21,12 @@ namespace Lib.Common.Ds.Queue
 
         public void Enqueue(T item)
         {
-            var temp = First;
-            First = new LinkNode<T> { Value = item, Next = temp };
+            var temp = Header;
+            Header = new DoubleLinkNode<T> { Value = item, Next = temp };
 
-            if (_last == null) _last = First;
+            if (temp != null) temp.Previous = Header;
+
+            if (_last == null) _last = Header;
 
             ++_n;
         }
@@ -36,14 +37,14 @@ namespace Lib.Common.Ds.Queue
 
             var item = _last.Value;
 
-            if (First.Next == null)
+            if (Header.Next == null)
             {
-                First = null;
+                Header = null;
                 _last = null;
             }
             else
             {
-                var current = First;
+                var current = Header;
 
                 while (current.Next != _last)
                 {
@@ -63,12 +64,12 @@ namespace Lib.Common.Ds.Queue
         {
             if (IsEmpty()) throw new InvalidOperationException();
 
-            return First.Value;
+            return Header.Value;
         }
 
         public bool IsEmpty()
         {
-            return First == null;
+            return Header == null;
         }
 
         public int Size()

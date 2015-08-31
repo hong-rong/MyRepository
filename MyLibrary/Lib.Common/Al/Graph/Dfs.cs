@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace Lib.Common.Al.Graph
@@ -24,36 +25,35 @@ namespace Lib.Common.Al.Graph
 
         public void Explore(int v)
         {
-            _dfsStats.Visited[v] = true;
-
-            _dfsStats.ComponentNum[v] = _componentCount;
-
             PreVisitVertice(v);
 
             foreach (var e in _G.Adjacent(v))
+            {
                 if (!_dfsStats.Visited[e])
                 {
                     Explore(e);
                 }
-                else if (e < v)//detect back edge, so detect cycle
+                //else if (e < v)
+                //only directed graph has 'back edge'
+                else if (_G is DirectedGraph && e < v)//e < v is not right
                 {
-                    Debug.WriteLine(string.Format("Attemp to visit vertice {0} from {1}, but {0} already visited", e, v));
+                    _dfsStats.BackEdges.Add(new Edge { From = v, To = e });
                 }
+            }
 
             PostVisitVertice(v);
         }
 
         private void PreVisitVertice(int v)
         {
+            _dfsStats.Visited[v] = true;
+            _dfsStats.ComponentNum[v] = _componentCount;
             _dfsStats.PreVisit[v] = _clock++;
-            Debug.WriteLine(string.Format("PreVisit[{0}]: {1}", v, _dfsStats.PreVisit[v]));
         }
 
         private void PostVisitVertice(int v)
         {
             _dfsStats.PostVisit[v] = _clock++;
-            Debug.WriteLine(string.Format("PostVisit[{0}]: {1}", v, _dfsStats.PostVisit[v]));
-
             _dfsStats.Linearization.Enqueue(v);
         }
 

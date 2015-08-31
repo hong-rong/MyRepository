@@ -13,7 +13,7 @@ namespace Lib.Common.Ds.Stack
         public Stack()
         {
             _n = 0;
-            First = null;
+            Header = null;
         }
 
         #region IStack
@@ -30,8 +30,8 @@ namespace Lib.Common.Ds.Stack
             //node.Next = _first.Next;
             //_first = node;
 
-            var temp = First;
-            First = new LinkNode<T> { Value = item, Next = temp };
+            var temp = Header;
+            Header = new LinkNode<T> { Value = item, Next = temp };
 
             ++_n;
         }
@@ -40,8 +40,8 @@ namespace Lib.Common.Ds.Stack
         {
             if (IsEmpty()) throw new InvalidOperationException();
 
-            T item = First.Value;
-            First = First.Next;
+            T item = Header.Value;
+            Header = Header.Next;
 
             --_n;
 
@@ -52,7 +52,7 @@ namespace Lib.Common.Ds.Stack
         {
             if (IsEmpty()) throw new InvalidOperationException();
 
-            return First.Value;
+            return Header.Value;
         }
 
         public bool IsEmpty()

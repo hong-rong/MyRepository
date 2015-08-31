@@ -1,4 +1,5 @@
 ﻿using Lib.Common.Ds.Ll;
+using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
@@ -29,11 +30,38 @@ namespace Lib.Common.Al.Graph
             get { return _E; }
         }
 
-        public abstract void AddPath(int u, int v);
+        public abstract void AddEdge(int u, int v);
+
+        public abstract void RemoveEdge(int u, int v);
 
         public virtual System.Collections.Generic.IEnumerable<int> Adjacent(int v)
         {
             return _al[v];
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("Graph has following vertices and edges:");
+            for (int i = 0; i < V; i++)
+            {
+                sb.Append(string.Format("{0}: ", i));
+                if (_al[i].Size() > 0)
+                {
+                    foreach (var e in _al[i])
+                    {
+                        sb.Append(string.Format("{0} ", e));
+                    }
+
+                }
+                else
+                {
+                    sb.Append("no edge");
+                }
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
         }
     }
 }

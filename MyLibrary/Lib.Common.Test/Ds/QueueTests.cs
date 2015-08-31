@@ -1,5 +1,6 @@
 ﻿using Lib.Common.Ds.Queue;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 
 namespace Lib.Common.Test.Ds
 {
@@ -17,13 +18,17 @@ namespace Lib.Common.Test.Ds
         }
 
         [TestMethod]
-        public void Enqueue_First_Null_Test()
+        public void Enqueue_Header_Null_Test()
         {
             var queue = new Queue<int>();
-            queue.Enqueue(9);
 
+            queue.Enqueue(9);
             Assert.AreEqual(1, queue.Size());
             Assert.AreEqual(9, queue.Peek());
+
+            queue.Enqueue(11);
+            Assert.AreEqual(2, queue.Size());
+            Assert.AreEqual(11, queue.Peek());
         }
 
         [TestMethod]
@@ -94,8 +99,33 @@ namespace Lib.Common.Test.Ds
         {
             var queue = CreateQueue();
 
-            Assert.AreEqual("2 1 ", queue.ToString());
+            Assert.AreEqual("1 2 ", queue.ToString());
         }
+
+        #region IEnumerable
+
+        [TestMethod]
+        public void IEnumerable_Test()
+        {
+            var q = new Queue<int>();
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+
+            int i = 0;
+            foreach (var item in q)
+            {
+                Assert.AreEqual(++i, item);
+            }
+
+            i = 0;
+            foreach (var item in q)
+            {
+                Assert.AreEqual(++i, item);
+            }
+        }
+
+        #endregion
 
         private Queue<int> CreateQueue()
         {

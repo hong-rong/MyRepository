@@ -6,10 +6,6 @@ namespace Lib.Common.Ds.Ll
 {
     public class LinkedList<T> : LinkedListEnumerable<T>, ILinkedList<T>
     {
-        //public LinkedList()
-        //    : this(new LinkNode<T>())
-        //{ }
-
         public LinkedList()
         { }
 
@@ -17,7 +13,7 @@ namespace Lib.Common.Ds.Ll
         {
             if (first == null) throw new ArgumentNullException("first");
 
-            First = first;
+            Header = first;
         }
 
         #region ILinkedList
@@ -36,7 +32,7 @@ namespace Lib.Common.Ds.Ll
                 throw new IndexOutOfRangeException();
 
             var i = 0;
-            var current = First;
+            var current = Header;
             while (i != index)
             {
                 current = current.Next;
@@ -50,9 +46,9 @@ namespace Lib.Common.Ds.Ll
         {
             var index = 0;
 
-            if (First != null && First.Value.Equals(t)) return index;
+            if (Header != null && Header.Value.Equals(t)) return index;
 
-            var current = First;
+            var current = Header;
             while (current.Next != null)
             {
                 current = current.Next;
@@ -66,7 +62,7 @@ namespace Lib.Common.Ds.Ll
         public bool Contains(T t)
         {
             var b = false;
-            var current = First;
+            var current = Header;
 
             while (current != null)
             {
@@ -84,7 +80,7 @@ namespace Lib.Common.Ds.Ll
         public int Size()
         {
             var i = 0;
-            var current = First;
+            var current = Header;
             while (current != null)
             {
                 i++;
@@ -100,7 +96,7 @@ namespace Lib.Common.Ds.Ll
             var current = GetLastNode();
 
             if (current == null)
-                First = item;
+                Header = item;
             else
                 current.Next = item;
         }
@@ -118,21 +114,21 @@ namespace Lib.Common.Ds.Ll
 
         public T Remove()
         {
-            var node = First;
-            First = null;
+            var node = Header;
+            Header = null;
 
             return node.Value;
         }
 
         public T Remove(int index)
         {
-            if (First == null) return default(T);
+            if (Header == null) return default(T);
 
             LinkNode<T> node;
-            if (index == 0 && First != null)
+            if (index == 0 && Header != null)
             {
-                node = First;
-                First = First.Next;
+                node = Header;
+                Header = Header.Next;
             }
             else
             {
@@ -149,14 +145,14 @@ namespace Lib.Common.Ds.Ll
 
         public void Clear()
         {
-            First = null;
+            Header = null;
         }
 
         private LinkNode<T> GetLastNode()
         {
-            if (First == null) return null;
+            if (Header == null) return null;
 
-            var current = First;
+            var current = Header;
 
             while (current.Next != null)
             {

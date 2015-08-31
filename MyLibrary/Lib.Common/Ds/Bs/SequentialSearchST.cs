@@ -22,7 +22,7 @@ namespace Lib.Common.Ds.Bs
                 throw new InvalidOperationException("Generic Value is not Nullable. Use Nullable<T> for Value.");
 
             _n = 0;
-            First = null;
+            Header = null;
         }
 
         public void Put(Key key, Value value)
@@ -34,7 +34,7 @@ namespace Lib.Common.Ds.Bs
                 return;
             }
 
-            var current = new LinkNodeST<Key, Value> { Next = First };
+            var current = new LinkNodeST<Key, Value> { Next = Header };
             while (current.Next != null)
             {
                 if (current.Next.Key.Equals(key))
@@ -46,7 +46,7 @@ namespace Lib.Common.Ds.Bs
                 current = current.Next;
             }
 
-            First = new LinkNodeST<Key, Value> { Key = key, Value = value, Next = First };
+            Header = new LinkNodeST<Key, Value> { Key = key, Value = value, Next = Header };
             ++_n;
         }
 
@@ -56,7 +56,7 @@ namespace Lib.Common.Ds.Bs
         /// <param name="key"></param>
         public void Delete_Recursive(Key key)
         {
-            First = Delete_Recursive(First, key);
+            Header = Delete_Recursive(Header, key);
         }
 
         private LinkNodeST<Key, Value> Delete_Recursive(LinkNodeST<Key, Value> node, Key key)
@@ -79,7 +79,7 @@ namespace Lib.Common.Ds.Bs
         /// </summary>
         public void Delete(Key key)
         {
-            var current = new LinkNodeST<Key, Value> { Next = First };
+            var current = new LinkNodeST<Key, Value> { Next = Header };
             while (current.Next != null)
             {
                 if (current.Next.Key.Equals(key))
@@ -95,7 +95,7 @@ namespace Lib.Common.Ds.Bs
 
         public Value Get(Key key)
         {
-            var current = First;
+            var current = Header;
 
             while (current != null)
             {
@@ -115,7 +115,7 @@ namespace Lib.Common.Ds.Bs
 
         public bool IsEmpty()
         {
-            return First == null;
+            return Header == null;
         }
 
         public int Size()

@@ -35,9 +35,9 @@ namespace Lib.Common.Test.Al
         {
             var ug = new UndirectedGraph(10);
 
-            ug.AddPath(4, 0);
-            ug.AddPath(4, 3);
-            ug.AddPath(4, 7);
+            ug.AddEdge(4, 0);
+            ug.AddEdge(4, 3);
+            ug.AddEdge(4, 7);
 
             Assert.AreEqual(3, ug.E);
         }

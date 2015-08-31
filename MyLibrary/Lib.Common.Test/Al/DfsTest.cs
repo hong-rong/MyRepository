@@ -36,9 +36,8 @@ namespace Lib.Common.Test.Al
             var g = DirectedGraph.CreateGraph37();
 
             var dfs = new Dfs(g);
-            dfs.Explore(0);//explore Vertice A
+            dfs.DepthFirstSearch();//explore Vertice A
 
-            Debug.WriteLine("");
             Debug.WriteLine(dfs.ToString());
         }
     }
