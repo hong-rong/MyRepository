@@ -1,13 +1,35 @@
-﻿using Lib.Common.Ds.Ll;
+﻿using Lib.Common.Ds.Bs;
+using Lib.Common.Ds.Ll;
 using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
+    /// <summary>
+    /// base class for undirected graph and directed graph
+    /// </summary>
     public abstract class GraphBase
     {
+        protected static SequentialSearchST<char, int?> _mapping;
         protected readonly int _V;
         protected int _E;
         protected LinkedList<int>[] _al;//adjacency list
+
+        static GraphBase()
+        {
+            _mapping = new SequentialSearchST<char, int?>();
+            _mapping.Put('A', 0);
+            _mapping.Put('B', 1);
+            _mapping.Put('C', 2);
+            _mapping.Put('D', 3);
+            _mapping.Put('E', 4);
+            _mapping.Put('F', 5);
+            _mapping.Put('G', 6);
+            _mapping.Put('H', 7);
+            _mapping.Put('I', 8);
+            _mapping.Put('J', 9);
+            _mapping.Put('K', 10);
+            _mapping.Put('L', 11);
+        }
 
         public GraphBase(int V)
         {
@@ -20,6 +42,14 @@ namespace Lib.Common.Al.Graph
             }
         }
 
+        public int GetMappedNumber(char key)
+        {
+            if (_mapping.Contains(key))
+                return _mapping.Get(key).Value;
+            else
+                return -1;
+        }
+
         public virtual int V
         {
             get { return _V; }
@@ -29,6 +59,16 @@ namespace Lib.Common.Al.Graph
         {
             get { return _E; }
         }
+
+        /// <summary>
+        /// add edge based on character which used in a lot of graph example.
+        /// It has same effect ad AddEdge(int u, int v)
+        /// This make it easier when adding edges from visual graph.
+        /// e.g., add edge for 'A' to 'B', same as AddEdge(0, 1) because 'A' is mapped to 0, and 'B' is mapped to 1
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        public abstract void AddEdge(char u, char v);
 
         public abstract void AddEdge(int u, int v);
 

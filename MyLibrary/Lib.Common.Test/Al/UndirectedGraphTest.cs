@@ -1,5 +1,6 @@
 ﻿using Lib.Common.Al.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Lib.Common.Test.Al
@@ -10,7 +11,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void Adjacent_Test()
         {
-            var ug = UndirectedGraph.CreateGraph32();
+            var ug = UndirectedGraph.CreateUndirectedGraph32();
 
             //vertice A
             Assert.AreEqual(3, ug.Adjacent(0).Count());
@@ -23,7 +24,7 @@ namespace Lib.Common.Test.Al
         }
 
         [TestMethod]
-        public void AddPath_No_Path_Test()
+        public void AddEdge_No_Path_Test()
         {
             var ug = new UndirectedGraph(10);
 
@@ -31,7 +32,7 @@ namespace Lib.Common.Test.Al
         }
 
         [TestMethod]
-        public void AddPath_Test()
+        public void AddEdge_Test()
         {
             var ug = new UndirectedGraph(10);
 
@@ -40,6 +41,14 @@ namespace Lib.Common.Test.Al
             ug.AddEdge(4, 7);
 
             Assert.AreEqual(3, ug.E);
+        }
+
+        [TestMethod]
+        public void AddEdge_Char_Test()
+        {
+            var ug = UndirectedGraph.CreateUndirectedGraph41();
+
+            Debug.WriteLine(ug.ToString());
         }
     }
 }

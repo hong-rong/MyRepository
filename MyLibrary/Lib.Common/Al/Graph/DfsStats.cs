@@ -16,6 +16,9 @@ namespace Lib.Common.Al.Graph
         Black = 2
     }
 
+    /// <summary>
+    /// Statistics for depth-first search results
+    /// </summary>
     public class DfsStats
     {
         private readonly int[] _preVisit;

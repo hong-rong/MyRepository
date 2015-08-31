@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
+    /// <summary>
+    /// Depth-first search
+    /// </summary>
     public class Dfs
     {
         private readonly DfsStats _dfsStats;
@@ -21,6 +24,19 @@ namespace Lib.Common.Al.Graph
             _clock = 1;
 
             _G = G;
+        }
+
+        public void DepthFirstSearch()
+        {
+            for (var i = 0; i < _G.V; i++)
+                _dfsStats.Visited[i] = false;
+
+            for (var i = 0; i < _G.V; i++)
+                if (!_dfsStats.Visited[i])
+                {
+                    _componentCount++;
+                    Explore(i);
+                }
         }
 
         public void Explore(int v)
@@ -55,19 +71,6 @@ namespace Lib.Common.Al.Graph
         {
             _dfsStats.PostVisit[v] = _clock++;
             _dfsStats.Linearization.AddFirst(v);
-        }
-
-        public void DepthFirstSearch()
-        {
-            for (var i = 0; i < _G.V; i++)
-                _dfsStats.Visited[i] = false;
-
-            for (var i = 0; i < _G.V; i++)
-                if (!_dfsStats.Visited[i])
-                {
-                    _componentCount++;
-                    Explore(i);
-                }
         }
 
         public override string ToString()

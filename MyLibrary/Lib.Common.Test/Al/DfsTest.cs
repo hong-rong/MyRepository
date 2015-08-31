@@ -10,7 +10,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void UndirectedGraph_Explore_Test()
         {
-            var g = UndirectedGraph.CreateGraph32();
+            var g = UndirectedGraph.CreateUndirectedGraph32();
 
             var dfs = new Dfs(g);
             dfs.Explore(0);//explore Vertice A
@@ -22,7 +22,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void UndirectedGraph_Dfs_Test()
         {
-            var g = UndirectedGraph.CreateGraph36();
+            var g = UndirectedGraph.CreateUndirectedGraph36();
 
             var dfs = new Dfs(g);
             dfs.DepthFirstSearch();
@@ -45,6 +45,17 @@ namespace Lib.Common.Test.Al
         public void DirectedGraph38_Explore_Test()
         {
             var g = DirectedGraph.CreateGraph38();
+
+            var dfs = new Dfs(g);
+            dfs.DepthFirstSearch();
+
+            Debug.WriteLine(dfs.ToString());
+        }
+
+        [TestMethod]
+        public void DirectedGraph39_Explore_Test()
+        {
+            var g = DirectedGraph.CreateGraph39();
 
             var dfs = new Dfs(g);
             dfs.DepthFirstSearch();

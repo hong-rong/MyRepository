@@ -11,7 +11,6 @@ namespace Lib.Common.Ds.Bs
     /// Symbol table(key, value pair) uses linked list implementation
     /// note that for value type Value, use nullable
     /// </summary>
-    //public class SequentialSearchST<Key, Value> : LinkEnumerableEntity<Value, LinkNodeST<Key, Value>>, ISymbolTable<Key, Value>
     public class SequentialSearchST<Key, Value> : SequentialSearchStEnumerable<Key, Value>, ISymbolTable<Key, Value>
     {
         private int _n;
