@@ -45,15 +45,15 @@ namespace Lib.Common.Al.Graph
 
             foreach (var e in _G.Adjacent(v))
             {
-                if (!_dfsStats.Visited[e])
+                if (!_dfsStats.Visited[e.V2])
                 {
-                    Explore(e);
+                    Explore(e.V2);
                 }
                 //else if (e < v)
                 //only directed graph has 'back edge'
-                else if (_G is DirectedGraph && e < v)//e < v is not right
+                else if (_G is DirectedGraph && e.V2 < v)//e < v is not right
                 {
-                    _dfsStats.BackEdges.Add(new Edge { From = v, To = e });
+                    _dfsStats.BackEdges.Add(new Edge { V1 = v, V2 = e.V2 });
                 }
             }
 

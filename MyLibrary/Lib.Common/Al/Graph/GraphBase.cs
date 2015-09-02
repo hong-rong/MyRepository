@@ -9,45 +9,45 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public abstract class GraphBase
     {
-        protected static SequentialSearchST<char, int?> _mapping;
+        protected static SequentialSearchST<char, int?> Mapping;
         protected readonly int _V;
         protected int _E;
-        protected LinkedList<int>[] _al;//adjacency list
+        protected LinkedList<Edge>[] Al;//adjacency list
 
         static GraphBase()
         {
-            _mapping = new SequentialSearchST<char, int?>();
-            _mapping.Put('A', 0);
-            _mapping.Put('B', 1);
-            _mapping.Put('C', 2);
-            _mapping.Put('D', 3);
-            _mapping.Put('E', 4);
-            _mapping.Put('F', 5);
-            _mapping.Put('G', 6);
-            _mapping.Put('H', 7);
-            _mapping.Put('I', 8);
-            _mapping.Put('J', 9);
-            _mapping.Put('K', 10);
-            _mapping.Put('L', 11);
+            Mapping = new SequentialSearchST<char, int?>();
+            Mapping.Put('A', 0);
+            Mapping.Put('B', 1);
+            Mapping.Put('C', 2);
+            Mapping.Put('D', 3);
+            Mapping.Put('E', 4);
+            Mapping.Put('F', 5);
+            Mapping.Put('G', 6);
+            Mapping.Put('H', 7);
+            Mapping.Put('I', 8);
+            Mapping.Put('J', 9);
+            Mapping.Put('K', 10);
+            Mapping.Put('L', 11);
         }
 
-        public GraphBase(int V)
+        public GraphBase(int v)
         {
-            _V = V;
+            _V = v;
             _E = 0;
-            _al = new LinkedList<int>[V];
-            for (int i = 0; i < V; i++)
+            Al = new LinkedList<Edge>[v];
+            for (var i = 0; i < v; i++)
             {
-                _al[i] = new LinkedList<int>();
+                Al[i] = new LinkedList<Edge>();
             }
         }
 
         public int GetMappedNumber(char key)
         {
-            if (_mapping.Contains(key))
-                return _mapping.Get(key).Value;
-            else
-                return -1;
+            if (Mapping.Contains(key))
+                return Mapping.Get(key).Value;
+
+            return -1;
         }
 
         public virtual int V
@@ -66,17 +66,17 @@ namespace Lib.Common.Al.Graph
         /// This make it easier when adding edges from visual graph.
         /// e.g., add edge for 'A' to 'B', same as AddEdge(0, 1) because 'A' is mapped to 0, and 'B' is mapped to 1
         /// </summary>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
         public abstract void AddEdge(char u, char v);
 
         public abstract void AddEdge(int u, int v);
 
-        public abstract void RemoveEdge(int u, int v);
+        public abstract void AddEdge(Edge e);
 
-        public virtual System.Collections.Generic.IEnumerable<int> Adjacent(int v)
+        public abstract void RemoveEdge(Edge e);
+
+        public virtual System.Collections.Generic.IEnumerable<Edge> Adjacent(int v)
         {
-            return _al[v];
+            return Al[v];
         }
 
         public override string ToString()
@@ -86,9 +86,9 @@ namespace Lib.Common.Al.Graph
             for (int i = 0; i < V; i++)
             {
                 sb.Append(string.Format("{0}: ", i));
-                if (_al[i].Size() > 0)
+                if (Al[i].Size() > 0)
                 {
-                    foreach (var e in _al[i])
+                    foreach (var e in Al[i])
                     {
                         sb.Append(string.Format("{0} ", e));
                     }

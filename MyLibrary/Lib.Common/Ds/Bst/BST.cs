@@ -271,7 +271,7 @@ namespace Lib.Common.Ds.Bst
 
         public override IEnumerable<Key> Keys(Key lo, Key hi)
         {
-            var queue = new global::Lib.Common.Ds.Queue.Queue<Key>();
+            var queue = new Queue.Queue<Key>();
             Keys(_root, queue, lo, hi);
 
             foreach (var linkNode in queue)

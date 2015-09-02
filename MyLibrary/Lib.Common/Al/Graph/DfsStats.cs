@@ -5,8 +5,14 @@ namespace Lib.Common.Al.Graph
 {
     public struct Edge
     {
-        public int From;
-        public int To;
+        public int V1 { get; set; }
+        public int V2 { get; set; }
+        public int Weight { get; set; }
+
+        public Edge ReverseVertices()
+        {
+            return new Edge { V1 = V2, V2 = V1, Weight = Weight };
+        }
     }
 
     public enum Color
@@ -108,7 +114,7 @@ namespace Lib.Common.Al.Graph
             sb.AppendLine("Back edge:");
             foreach (var b in BackEdges)
             {
-                sb.AppendLine(string.Format("From {0} to {1}", b.From, b.To));
+                sb.AppendLine(string.Format("From {0} to {1}", b.V1, b.V2));
             }
 
             sb.AppendLine();

@@ -313,14 +313,14 @@ namespace Lib.Common.Test.Ds
         {
             var keys = CreateBST().Keys().ToList();
 
-            Assert.AreEqual("X", keys[0]);
-            Assert.AreEqual("S", keys[1]);
-            Assert.AreEqual("R", keys[2]);
-            Assert.AreEqual("M", keys[3]);
-            Assert.AreEqual("H", keys[4]);
-            Assert.AreEqual("E", keys[5]);
-            Assert.AreEqual("C", keys[6]);
-            Assert.AreEqual("A", keys[7]);
+            Assert.AreEqual("A", keys[0]);
+            Assert.AreEqual("C", keys[1]);
+            Assert.AreEqual("E", keys[2]);
+            Assert.AreEqual("H", keys[3]);
+            Assert.AreEqual("M", keys[4]);
+            Assert.AreEqual("R", keys[5]);
+            Assert.AreEqual("S", keys[6]);
+            Assert.AreEqual("X", keys[7]);
         }
 
         [TestMethod]
@@ -328,11 +328,11 @@ namespace Lib.Common.Test.Ds
         {
             var keys = CreateBST().Keys("E", "S").ToList();
 
-            Assert.AreEqual("S", keys[0]);
-            Assert.AreEqual("R", keys[1]);
+            Assert.AreEqual("E", keys[0]);
+            Assert.AreEqual("H", keys[1]);
             Assert.AreEqual("M", keys[2]);
-            Assert.AreEqual("H", keys[3]);
-            Assert.AreEqual("E", keys[4]);
+            Assert.AreEqual("R", keys[3]);
+            Assert.AreEqual("S", keys[4]);
         }
 
         #endregion
@@ -356,14 +356,14 @@ namespace Lib.Common.Test.Ds
         {
             var keys = CreateBST().Keys().ToList();
 
-            Assert.AreEqual("X", keys[0]);
-            Assert.AreEqual("S", keys[1]);
-            Assert.AreEqual("R", keys[2]);
-            Assert.AreEqual("M", keys[3]);
-            Assert.AreEqual("H", keys[4]);
-            Assert.AreEqual("E", keys[5]);
-            Assert.AreEqual("C", keys[6]);
-            Assert.AreEqual("A", keys[7]);
+            Assert.AreEqual("A", keys[0]);
+            Assert.AreEqual("C", keys[1]);
+            Assert.AreEqual("E", keys[2]);
+            Assert.AreEqual("H", keys[3]);
+            Assert.AreEqual("M", keys[4]);
+            Assert.AreEqual("R", keys[5]);
+            Assert.AreEqual("S", keys[6]);
+            Assert.AreEqual("X", keys[7]);
         }
 
         #endregion

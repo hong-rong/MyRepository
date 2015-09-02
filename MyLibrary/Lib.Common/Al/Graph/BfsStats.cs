@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
@@ -11,7 +7,11 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class BfsStats
     {
+        //distance for each vertice from a start vertice
         private readonly int[] _dist;
+
+        //previous vertice for each vertice
+        private readonly int[] _prev;
 
         public BfsStats(int V)
         {
@@ -27,9 +27,14 @@ namespace Lib.Common.Al.Graph
             get { return _dist; }
         }
 
+        public int[] Prev
+        {
+            get { return _prev; }
+        }
+
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine("breadth-first search:");
             for (int i = 0; i < Dist.Length; i++)
             {

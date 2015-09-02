@@ -1,16 +1,14 @@
-﻿using Lib.Common.Ds.Ll;
-
-namespace Lib.Common.Al.Graph
+﻿namespace Lib.Common.Al.Graph
 {
     public class UndirectedGraph : GraphBase
     {
-        public UndirectedGraph(int V)
-            : base(V)
+        public UndirectedGraph(int v)
+            : base(v)
         { }
 
         public static UndirectedGraph CreateUndirectedGraph41()
         {
-            UndirectedGraph g = new UndirectedGraph(6);
+            var g = new UndirectedGraph(6);
 
             g.AddEdge('A', 'B');
             g.AddEdge('A', 'S');
@@ -91,25 +89,32 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(char u, char v)
         {
-            int nu = GetMappedNumber(u) == -1 ? _al.Length - 1 : GetMappedNumber(u);
-            int nv = GetMappedNumber(v) == -1 ? _al.Length - 1 : GetMappedNumber(v);
-            _al[nu].AddLast(nv);
-            _al[nv].AddLast(nu);
+            int nu = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(u);
+            int nv = GetMappedNumber(v) == -1 ? Al.Length - 1 : GetMappedNumber(v);
+            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv });
+            Al[nv].AddLast(new Edge { V1 = nv, V2 = nu });
 
             _E++;
         }
 
         public override void AddEdge(int u, int v)
         {
-            _al[u].AddLast(v);
-            _al[v].AddLast(u);
+            Al[u].AddLast(new Edge { V1 = u, V2 = v });
+            Al[v].AddLast(new Edge { V1 = v, V2 = u });
             _E++;
         }
 
-        public override void RemoveEdge(int u, int v)
+        public override void AddEdge(Edge e)
         {
-            _al[u].Remove(v);
-            _al[v].Remove(u);
+            Al[e.V1].AddLast(e);
+            Al[e.V2].AddLast(e.ReverseVertices());
+            _E++;
+        }
+
+        public override void RemoveEdge(Edge e)
+        {
+            Al[e.V1].Remove(e.V2);
+            Al[e.V2].Remove(e.V1);
             _E--;
         }
     }

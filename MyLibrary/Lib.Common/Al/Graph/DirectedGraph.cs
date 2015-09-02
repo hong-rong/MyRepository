@@ -1,32 +1,17 @@
-﻿using Lib.Common.Ds.Ll;
-using Lib.Common.Ds.Queue;
+﻿using Lib.Common.Ds.Queue;
 using System;
 
 namespace Lib.Common.Al.Graph
 {
-    /// <summary>
-    /// A	0
-    /// B	1
-    /// C	2
-    /// D	3
-    /// E	4
-    /// F	5
-    /// G	6
-    /// H	7
-    /// I	8
-    /// J	9
-    /// K	10
-    /// L   11
-    /// </summary>
     public class DirectedGraph : GraphBase
     {
-        public DirectedGraph(int V)
-            : base(V)
+        public DirectedGraph(int v)
+            : base(v)
         { }
 
         public static DirectedGraph CreateGraph39()
         {
-            DirectedGraph g = new DirectedGraph(12);
+            var g = new DirectedGraph(12);
 
             #region add edge
             //A
@@ -58,7 +43,7 @@ namespace Lib.Common.Al.Graph
             //L
             g.AddEdge(11, 9);
 
-#endregion
+            #endregion
 
             return g;
         }
@@ -111,23 +96,23 @@ namespace Lib.Common.Al.Graph
         public void ReverseGraph()
         {
             var q = new Queue<Edge>();
-            for (int v = 0; v < _V; v++)
+            for (var v = 0; v < _V; v++)
             {
-                foreach (var u in _al[v])
+                foreach (var e in Al[v])
                 {
-                    q.Enqueue(new Edge() { From = u, To = v });//reverse edge
+                    q.Enqueue(new Edge { V1 = e.V2, V2 = v });//reverse edge
                 }
             }
 
-            for (int i = 0; i < _V; i++)
+            for (var i = 0; i < _V; i++)
             {
-                _al[i].Clear();
+                Al[i].Clear();
             }
             _E = 0;
 
             foreach (var e in q)
             {
-                AddEdge(e.From, e.To);
+                AddEdge(e);
             }
         }
 
@@ -138,14 +123,19 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(int u, int v)
         {
-            _al[u].AddLast(v);
-
+            Al[u].AddLast(new Edge { V1 = u, V2 = v });
             _E++;
         }
 
-        public override void RemoveEdge(int u, int v)
+        public override void AddEdge(Edge e)
         {
-            _al[u].Remove(v);
+            Al[e.V1].AddLast(e);
+            _E++;
+        }
+
+        public override void RemoveEdge(Edge e)
+        {
+            Al[e.V1].Remove(e.V2);
             _E--;
         }
     }
