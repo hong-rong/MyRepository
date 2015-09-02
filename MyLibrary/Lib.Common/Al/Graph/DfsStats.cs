@@ -64,6 +64,17 @@ namespace Lib.Common.Al.Graph
             get { return _visited; }
         }
 
+        public void ResetStats()
+        {
+            for (int i = 0; i < Visited.Length; i++)
+            {
+                PreVisit[i] = -1;
+                Visited[i] = false;
+                PostVisit[i] = -1;
+                ComponentNum[i] = -1;
+            }
+        }
+
         public int[] PostVisit
         {
             get { return _postVisit; }

@@ -39,6 +39,26 @@ namespace Lib.Common.Al.Graph
                 }
         }
 
+        public void StrongConnectedComponentAlgorithm()
+        {
+            (_G as DirectedGraph).ReverseGraph();//reverse G
+            DepthFirstSearch();
+
+            _dfsStats.ResetStats();
+            _clock = 1;
+            _componentCount = 0;
+
+            (_G as DirectedGraph).ReverseGraph();//reverse G back
+            foreach (var v in _dfsStats.Linearization)
+            {
+                if (!_dfsStats.Visited[v])
+                {
+                    _componentCount++;
+                    Explore(v);
+                }
+            }
+        }
+
         public void Explore(int v)
         {
             PreVisitVertice(v);

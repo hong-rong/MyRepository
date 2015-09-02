@@ -62,5 +62,16 @@ namespace Lib.Common.Test.Al
 
             Debug.WriteLine(dfs.ToString());
         }
+
+        [TestMethod]
+        public void DirectedGraph39_StrongConnectedComponentAlgorithm_Test()
+        {
+            var g = DirectedGraph.CreateGraph39();
+
+            var dfs = new Dfs(g);
+            dfs.StrongConnectedComponentAlgorithm();
+
+            Debug.WriteLine(dfs.ToString());
+        }
     }
 }
