@@ -47,6 +47,8 @@
     <Compile Include="Al\GeneralAlgorithm.cs" />
     <Compile Include="Al\Graph\Bfs.cs" />
     <Compile Include="Al\Graph\BfsStats.cs" />
+    <Compile Include="Al\Graph\DijKstra.cs" />
+    <Compile Include="Al\Graph\DijKstraStats.cs" />
     <Compile Include="Al\Graph\DirectedGraph.cs" />
     <Compile Include="Al\Graph\DfsStats.cs" />
     <Compile Include="Al\Graph\Dfs.cs" />
