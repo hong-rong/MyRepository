@@ -9,6 +9,23 @@ namespace Lib.Common.Al.Graph
             : base(v)
         { }
 
+        public static DirectedGraph CreateGraph49()
+        {
+            var g = new DirectedGraph(5);
+
+            g.AddEdge('A', 'B');
+            g.AddEdge('A', 'C');
+            g.AddEdge('B', 'C');
+            g.AddEdge('B', 'D');
+            g.AddEdge('B', 'E');
+            g.AddEdge('C', 'B');
+            g.AddEdge('C', 'D');
+            g.AddEdge('C', 'E');
+            g.AddEdge('E', 'D');
+
+            return g;
+        }
+
         public static DirectedGraph CreateGraph39()
         {
             var g = new DirectedGraph(12);
@@ -118,7 +135,11 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(char u, char v)
         {
-            throw new NotImplementedException();
+            int nu = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(u);
+            int nv = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(v);
+
+            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv });
+            _E++;
         }
 
         public override void AddEdge(int u, int v)

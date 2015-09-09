@@ -9,7 +9,9 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public abstract class GraphBase
     {
+        //map graph node from char to int, e.g., 'A'->0, make it viually easier to understand
         protected static SequentialSearchST<char, int?> Mapping;
+
         protected readonly int _V;
         protected int _E;
         protected LinkedList<Edge>[] Al;//adjacency list
@@ -42,7 +44,12 @@ namespace Lib.Common.Al.Graph
             }
         }
 
-        public int GetMappedNumber(char key)
+        /// <summary>
+        /// Get graph char node mapped int number. If not in the mapping list, return -1
+        /// </summary>
+        /// <param name="key">Graph node with char representation</param>
+        /// <returns>The mapped int of the char presentation</returns>
+        public static int GetMappedNumber(char key)
         {
             if (Mapping.Contains(key))
                 return Mapping.Get(key).Value;
