@@ -89,10 +89,15 @@
 
         public override void AddEdge(char u, char v)
         {
+            AddEdge(u, v, 0);
+        }
+
+        public override void AddEdge(char u, char v, int weight)
+        {
             int nu = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(u);
             int nv = GetMappedNumber(v) == -1 ? Al.Length - 1 : GetMappedNumber(v);
-            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv });
-            Al[nv].AddLast(new Edge { V1 = nv, V2 = nu });
+            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv, Weight = weight });
+            Al[nv].AddLast(new Edge { V1 = nv, V2 = nu, Weight = weight });
 
             _E++;
         }

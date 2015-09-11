@@ -9,8 +9,8 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public abstract class GraphBase
     {
-        //map graph node from char to int, e.g., 'A'->0, make it viually easier to understand
-        protected static SequentialSearchST<char, int?> Mapping;
+        //map graph node from char to int, e.g., 'A'->0, make it visually easier to understand
+        protected static SequentialSearchST<char, int?> NodeFromCharToIntMapping;
 
         protected readonly int _V;
         protected int _E;
@@ -18,19 +18,19 @@ namespace Lib.Common.Al.Graph
 
         static GraphBase()
         {
-            Mapping = new SequentialSearchST<char, int?>();
-            Mapping.Put('A', 0);
-            Mapping.Put('B', 1);
-            Mapping.Put('C', 2);
-            Mapping.Put('D', 3);
-            Mapping.Put('E', 4);
-            Mapping.Put('F', 5);
-            Mapping.Put('G', 6);
-            Mapping.Put('H', 7);
-            Mapping.Put('I', 8);
-            Mapping.Put('J', 9);
-            Mapping.Put('K', 10);
-            Mapping.Put('L', 11);
+            NodeFromCharToIntMapping = new SequentialSearchST<char, int?>();
+            NodeFromCharToIntMapping.Put('A', 0);
+            NodeFromCharToIntMapping.Put('B', 1);
+            NodeFromCharToIntMapping.Put('C', 2);
+            NodeFromCharToIntMapping.Put('D', 3);
+            NodeFromCharToIntMapping.Put('E', 4);
+            NodeFromCharToIntMapping.Put('F', 5);
+            NodeFromCharToIntMapping.Put('G', 6);
+            NodeFromCharToIntMapping.Put('H', 7);
+            NodeFromCharToIntMapping.Put('I', 8);
+            NodeFromCharToIntMapping.Put('J', 9);
+            NodeFromCharToIntMapping.Put('K', 10);
+            NodeFromCharToIntMapping.Put('L', 11);
         }
 
         public GraphBase(int v)
@@ -51,8 +51,8 @@ namespace Lib.Common.Al.Graph
         /// <returns>The mapped int of the char presentation</returns>
         public static int GetMappedNumber(char key)
         {
-            if (Mapping.Contains(key))
-                return Mapping.Get(key).Value;
+            if (NodeFromCharToIntMapping.Contains(key))
+                return NodeFromCharToIntMapping.Get(key).Value;
 
             return -1;
         }
@@ -74,6 +74,8 @@ namespace Lib.Common.Al.Graph
         /// e.g., add edge for 'A' to 'B', same as AddEdge(0, 1) because 'A' is mapped to 0, and 'B' is mapped to 1
         /// </summary>
         public abstract void AddEdge(char u, char v);
+
+        public abstract void AddEdge(char u, char v, int weight);
 
         public abstract void AddEdge(int u, int v);
 

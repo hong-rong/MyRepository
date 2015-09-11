@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
@@ -7,7 +8,7 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class Distance : IComparable<Distance>
     {
-        public int Vertice { get; set; }
+        public int V { get; set; }
         public int Dist { get; set; }
 
         public int CompareTo(Distance other)
@@ -45,6 +46,24 @@ namespace Lib.Common.Al.Graph
             get { return _prev; }
         }
 
-        public int StartVertice { get; set; }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Shortest path:");
+            for (int i = 0; i < Prev.Length; i++)
+            {
+                sb.AppendLine(string.Format("{0}: {1}", i, Prev[i].ToString()));
+            }
+            sb.AppendLine();
+
+            sb.AppendLine("Vertice distance:");
+            for (int i = 0; i < Dist.Length; i++)
+            {
+                sb.AppendLine(string.Format("{0}: {1}", i, Dist[i]));
+            }
+            sb.AppendLine();
+
+            return sb.ToString();
+        }
     }
 }

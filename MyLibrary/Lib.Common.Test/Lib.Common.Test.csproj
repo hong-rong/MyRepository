@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Al\BfsTest.cs" />
     <Compile Include="Al\DfsTest.cs" />
+    <Compile Include="Al\DijkstraTest.cs" />
     <Compile Include="Al\DirectGraphTest.cs" />
     <Compile Include="Al\UndirectedGraphTest.cs" />
     <Compile Include="Ds\BSTTests.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Ds\Bs\BinarySearchTestBase.cs" />
     <Compile Include="Ds\Bs\BinarySearchTests.cs" />
     <Compile Include="Ds\LinkedListTest.cs" />
+    <Compile Include="Ds\Pq\MinPQTest.cs" />
     <Compile Include="Ds\QueueTests.cs" />
     <Compile Include="Ds\SequentialSearchSTTests.cs" />
     <Compile Include="Ds\StackTests.cs" />

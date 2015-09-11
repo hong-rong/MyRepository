@@ -13,15 +13,15 @@ namespace Lib.Common.Al.Graph
         {
             var g = new DirectedGraph(5);
 
-            g.AddEdge('A', 'B');
-            g.AddEdge('A', 'C');
-            g.AddEdge('B', 'C');
-            g.AddEdge('B', 'D');
-            g.AddEdge('B', 'E');
-            g.AddEdge('C', 'B');
-            g.AddEdge('C', 'D');
-            g.AddEdge('C', 'E');
-            g.AddEdge('E', 'D');
+            g.AddEdge('A', 'B', 4);
+            g.AddEdge('A', 'C', 2);
+            g.AddEdge('B', 'C', 3);
+            g.AddEdge('B', 'D', 2);
+            g.AddEdge('B', 'E', 3);
+            g.AddEdge('C', 'B', 1);
+            g.AddEdge('C', 'D', 4);
+            g.AddEdge('C', 'E', 5);
+            g.AddEdge('E', 'D', 1);
 
             return g;
         }
@@ -135,10 +135,15 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(char u, char v)
         {
+            AddEdge(u, v, 0);
+        }
+
+        public override void AddEdge(char u, char v, int weight)
+        {
             int nu = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(u);
             int nv = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(v);
 
-            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv });
+            Al[nu].AddLast(new Edge { V1 = nu, V2 = nv, Weight = weight });
             _E++;
         }
 
