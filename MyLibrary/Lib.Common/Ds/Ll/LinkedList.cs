@@ -177,6 +177,18 @@ namespace Lib.Common.Ds.Ll
             return current;
         }
 
+        public T[] ToArray()
+        {
+            int i = 0;
+            var arr = new T[Size()];
+            foreach (var item in this)
+            {
+                arr[i++] = item;
+            }
+
+            return arr;
+        }
+
         #endregion
     }
 }

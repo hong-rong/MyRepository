@@ -39,8 +39,8 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(char u, char v, int weight)
         {
-            int nu = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(u);
-            int nv = GetMappedNumber(u) == -1 ? Al.Length - 1 : GetMappedNumber(v);
+            int nu = GetMappedNumber(u);
+            int nv = GetMappedNumber(u);
 
             Al[nu].AddLast(new Edge { V1 = nu, V2 = nv, Weight = weight });
             _E++;

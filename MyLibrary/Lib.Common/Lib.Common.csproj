@@ -48,13 +48,14 @@
     <Compile Include="Al\Graph\Bfs.cs" />
     <Compile Include="Al\Graph\BfsStats.cs" />
     <Compile Include="Al\Graph\Dijkstra.cs" />
-    <Compile Include="Al\Graph\DijkstraStats.cs" />
+    <Compile Include="Al\Graph\GeneralGraphShortestPath.cs" />
+    <Compile Include="Al\Graph\ShortestPathStats.cs" />
     <Compile Include="Al\Graph\DirectedGraph.cs" />
     <Compile Include="Al\Graph\DfsStats.cs" />
     <Compile Include="Al\Graph\Dfs.cs" />
     <Compile Include="Al\Graph\GraphBase.cs" />
     <Compile Include="Al\Graph\GraphFactory.cs" />
-    <Compile Include="Al\Graph\ShortestPathInDag.cs" />
+    <Compile Include="Al\Graph\DagShortestPath.cs" />
     <Compile Include="Al\Graph\UndirectedGraph.cs" />
     <Compile Include="Ds\Bst\BST.cs" />
     <Compile Include="Ds\Bst\BSTNode.cs" />

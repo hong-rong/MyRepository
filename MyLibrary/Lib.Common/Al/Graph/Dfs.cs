@@ -9,75 +9,70 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class Dfs
     {
-        private readonly DfsStats _dfsStats;
-
+        private DfsStats _stats;
         private int _componentCount;
         private int _clock;
 
-        private readonly GraphBase _G;
-
-        public Dfs(GraphBase G)
+        public Dfs(int V)
         {
-            _dfsStats = new DfsStats(G.V);
-
+            _stats = new DfsStats(V);
             _componentCount = 0;
             _clock = 1;
-
-            _G = G;
         }
 
-        public DfsStats DepthFirstSearch()
+        public DfsStats DepthFirstSearch(GraphBase g)
         {
-            for (var i = 0; i < _G.V; i++)
-                _dfsStats.Visited[i] = false;
+            for (var i = 0; i < g.V; i++)
+                _stats.Visited[i] = false;
 
-            for (var i = 0; i < _G.V; i++)
-                if (!_dfsStats.Visited[i])
+            for (var i = 0; i < g.V; i++)
+                if (!_stats.Visited[i])
                 {
                     _componentCount++;
-                    Explore(i);
+                    Explore(g, i);
                 }
 
-            return _dfsStats;
+            return _stats;
         }
 
-        public DfsStats StrongConnectedComponentAlgorithm()
+        public DfsStats StrongConnectedComponentAlgorithm(DirectedGraph g)
         {
-            (_G as DirectedGraph).ReverseGraph();//reverse G
-            DepthFirstSearch();
+            g.ReverseGraph();//reverse G
+            var stats = DepthFirstSearch(g);
+            var linearization = _stats.Linearization;
 
-            _dfsStats.ResetStats();
+            _stats = new DfsStats(g.V);
             _clock = 1;
             _componentCount = 0;
 
-            (_G as DirectedGraph).ReverseGraph();//reverse G back
-            foreach (var v in _dfsStats.Linearization)
+            (g as DirectedGraph).ReverseGraph();//reverse G back
+            foreach (var v in linearization)
             {
-                if (!_dfsStats.Visited[v])
+                if (!_stats.Visited[v])
                 {
                     _componentCount++;
-                    Explore(v);
+                    Explore(g, v);
                 }
             }
 
-            return _dfsStats;
+            return _stats;
         }
 
-        public void Explore(int v)
+        public void Explore(GraphBase g, int v)
         {
             PreVisitVertice(v);
 
-            foreach (var e in _G.Adjacent(v))
+            foreach (var e in g.Adjacent(v))
             {
-                if (!_dfsStats.Visited[e.V2])
+                if (!_stats.Visited[e.V2])
                 {
-                    Explore(e.V2);
+                    Explore(g, e.V2);
                 }
                 //else if (e < v)
                 //only directed graph has 'back edge'
-                else if (_G is DirectedGraph && e.V2 < v)//e < v is not right
+                else if (g is DirectedGraph && e.V2 < v)//e < v is not right
                 {
-                    _dfsStats.BackEdges.Add(new Edge { V1 = v, V2 = e.V2 });
+                    _stats.BackEdges.Add(new Edge { V1 = v, V2 = e.V2 });
                 }
             }
 
@@ -86,20 +81,15 @@ namespace Lib.Common.Al.Graph
 
         private void PreVisitVertice(int v)
         {
-            _dfsStats.Visited[v] = true;
-            _dfsStats.ComponentNum[v] = _componentCount;
-            _dfsStats.PreVisit[v] = _clock++;
+            _stats.Visited[v] = true;
+            _stats.ComponentNum[v] = _componentCount;
+            _stats.PreVisit[v] = _clock++;
         }
 
         private void PostVisitVertice(int v)
         {
-            _dfsStats.PostVisit[v] = _clock++;
-            _dfsStats.Linearization.AddFirst(v);
-        }
-
-        public override string ToString()
-        {
-            return _dfsStats.ToString();
+            _stats.PostVisit[v] = _clock++;
+            _stats.Linearization.AddFirst(v);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void ToString_Test()
         {
-            var dg = GraphFactory.CreateGraph37();
+            var dg = GraphFactory.CreateDirectGraph37();
             Assert.AreEqual(8, dg.V);
             Assert.AreEqual(13, dg.E);
         }
@@ -22,7 +22,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void Reverse_Test()
         {
-            var dg = GraphFactory.CreateGraph37();
+            var dg = GraphFactory.CreateDirectGraph37();
             dg.ReverseGraph();
             var adj = dg.Adjacent(5).ToList();//reversed neibour of node 5
             Assert.AreEqual(8, dg.V);

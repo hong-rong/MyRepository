@@ -1,5 +1,6 @@
 ﻿using Lib.Common.Ds.Bs;
 using Lib.Common.Ds.Ll;
+using System;
 using System.Text;
 
 namespace Lib.Common.Al.Graph
@@ -10,14 +11,16 @@ namespace Lib.Common.Al.Graph
     public abstract class GraphBase
     {
         //map graph node from char to int, e.g., 'A'->0, make it visually easier to understand
-        protected static SequentialSearchST<char, int?> NodeFromCharToIntMapping;
+        protected SequentialSearchST<char, int?> NodeFromCharToIntMapping;
 
         protected readonly int _V;
         protected int _E;
         protected LinkedList<Edge>[] Al;//adjacency list
 
-        static GraphBase()
+        public GraphBase(int v)
         {
+            #region node char to int mapping
+
             NodeFromCharToIntMapping = new SequentialSearchST<char, int?>();
             NodeFromCharToIntMapping.Put('A', 0);
             NodeFromCharToIntMapping.Put('B', 1);
@@ -31,10 +34,9 @@ namespace Lib.Common.Al.Graph
             NodeFromCharToIntMapping.Put('J', 9);
             NodeFromCharToIntMapping.Put('K', 10);
             NodeFromCharToIntMapping.Put('L', 11);
-        }
 
-        public GraphBase(int v)
-        {
+            #endregion
+
             _V = v;
             _E = 0;
             Al = new LinkedList<Edge>[v];
@@ -49,12 +51,15 @@ namespace Lib.Common.Al.Graph
         /// </summary>
         /// <param name="key">Graph node with char representation</param>
         /// <returns>The mapped int of the char presentation</returns>
-        public static int GetMappedNumber(char key)
+        public int GetMappedNumber(char key)
         {
             if (NodeFromCharToIntMapping.Contains(key))
                 return NodeFromCharToIntMapping.Get(key).Value;
 
-            return -1;
+            if (key == 'S')//start vertice, put in last position of Al
+                return Al.Length - 1;
+
+            throw new InvalidOperationException(string.Format("Cannot find mapping for char representation: {0}", key));
         }
 
         public virtual int V

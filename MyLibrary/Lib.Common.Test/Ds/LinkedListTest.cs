@@ -281,6 +281,22 @@ namespace Lib.Common.Test.Ds
 
         #endregion
 
+        #region ToArray
+
+        [TestMethod]
+        public void ToArrayTest()
+        {
+            var list = CreateLinkedList();
+            var arr = list.ToArray();
+
+            Assert.AreEqual(0, arr[0]);
+            Assert.AreEqual(1, arr[1]);
+            Assert.AreEqual(2, arr[2]);
+            Assert.AreEqual(4, arr[3]);
+        }
+
+        #endregion
+
         protected LinkNode<int> CreateNodeHeader()
         {
             var first = new LinkNode<int> { Value = 0 };

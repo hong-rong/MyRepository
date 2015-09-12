@@ -9,9 +9,9 @@ namespace Lib.Common.Al.Graph
         /// </summary>
         /// <param name="g">Graph for search</param>
         /// <param name="s">Start vertice</param>
-        public static DijkstraStats ShortestPath(GraphBase g, int s)
+        public static ShortestPathStats ShortestPath(GraphBase g, int s)
         {
-            var dijkstraStats = new DijkstraStats(g.V);
+            var dijkstraStats = new ShortestPathStats(g.V);
 
             for (var i = 0; i < dijkstraStats.Dist.Length; i++)
             {

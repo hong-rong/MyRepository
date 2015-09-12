@@ -29,5 +29,7 @@
         T Remove(int index);
 
         void Clear();
+
+        T[] ToArray();
     }
 }
