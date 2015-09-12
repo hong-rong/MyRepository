@@ -4,50 +4,41 @@ namespace Lib.Common.Al.Graph
 {
     public class Dijkstra
     {
-        private readonly GraphBase _G;
-        private readonly DijKstraStats _dijkstraStats;
-
-        public Dijkstra(GraphBase g)
-        {
-            _G = g;
-            _dijkstraStats = new DijKstraStats(g.V);
-        }
-
         /// <summary>
-        /// Dijkstra algorithm (shortest path)
+        /// Dijkstra algorithm (shortest path) based on graph g for start vertice s
         /// </summary>
-        /// <param name="s">start vertice</param>
-        public void ShortestPath(int s)
+        /// <param name="g">Graph for search</param>
+        /// <param name="s">Start vertice</param>
+        public static DijkstraStats ShortestPath(GraphBase g, int s)
         {
-            for (var i = 0; i < _dijkstraStats.Dist.Length; i++)
+            var dijkstraStats = new DijkstraStats(g.V);
+
+            for (var i = 0; i < dijkstraStats.Dist.Length; i++)
             {
-                _dijkstraStats.Dist[i] = int.MaxValue;
-                _dijkstraStats.Prev[i] = -1;
+                dijkstraStats.Dist[i] = int.MaxValue;
+                dijkstraStats.Prev[i] = -1;
             }
 
-            _dijkstraStats.Dist[s] = 0;//start vertice
-            var pq = new MinPQ<Distance>(_dijkstraStats.Dist.Length);
+            dijkstraStats.Dist[s] = 0;//start vertice
+            var pq = new MinPQ<Distance>(dijkstraStats.Dist.Length);
             pq.Insert(new Distance { Dist = 0, V = s });
 
             while (!pq.IsEmpty())
             {
                 var v = pq.DelMin();
 
-                foreach (var e in _G.Adjacent(v.V))
+                foreach (var e in g.Adjacent(v.V))
                 {
-                    if (_dijkstraStats.Dist[e.V2] > _dijkstraStats.Dist[v.V] + e.Weight)
+                    if (dijkstraStats.Dist[e.V2] > dijkstraStats.Dist[v.V] + e.Weight)
                     {
-                        _dijkstraStats.Dist[e.V2] = _dijkstraStats.Dist[v.V] + e.Weight;
-                        _dijkstraStats.Prev[e.V2] = v.V;
-                        pq.Insert(new Distance { V = e.V2, Dist = _dijkstraStats.Dist[e.V2] });
+                        dijkstraStats.Dist[e.V2] = dijkstraStats.Dist[v.V] + e.Weight;
+                        dijkstraStats.Prev[e.V2] = v.V;
+                        pq.Insert(new Distance { V = e.V2, Dist = dijkstraStats.Dist[e.V2] });
                     }
                 }
             }
-        }
 
-        public override string ToString()
-        {
-            return _dijkstraStats.ToString();
+            return dijkstraStats;
         }
     }
 }

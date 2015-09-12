@@ -5,24 +5,23 @@
     /// </summary>
     public class Bfs
     {
-        private readonly GraphBase _G;
-        private readonly BfsStats _bfsStats;
-
-        public Bfs(GraphBase g)
+        /// <summary>
+        /// Breadth-first search on g with start vertice: s
+        /// </summary>
+        /// <param name="g">Graph for search</param>
+        /// <param name="s">Start vertice</param>
+        /// <returns>Breadth-first search results</returns>
+        public static BfsStats BreadthFirstSearch(GraphBase g, int s)
         {
-            _G = g;
-            _bfsStats = new BfsStats(g.V);
-        }
-
-        public void BreadthFirstSearch(int s)
-        {
+            var _bfsStats = new BfsStats(g.V);
             _bfsStats.Dist[s] = 0;
+
             var q = new Ds.Queue.Queue<int>();
             q.Enqueue(s);
             while (!q.IsEmpty())
             {
                 var u = q.Dequeue();
-                foreach (var e in _G.Adjacent(u))
+                foreach (var e in g.Adjacent(u))
                 {
                     if (_bfsStats.Dist[e.V2] == int.MaxValue)
                     {
@@ -31,11 +30,8 @@
                     }
                 }
             }
-        }
 
-        public override string ToString()
-        {
-            return _bfsStats.ToString();
+            return _bfsStats;
         }
     }
 }

@@ -16,10 +16,16 @@ namespace Lib.Common.Test.Al
         public void BreadthFirstSearch_Test()
         {
             var ug = UndirectedGraph.CreateUndirectedGraph41();
-            var bfs = new Bfs(ug);
-            bfs.BreadthFirstSearch(5);
+            var bfsStats = Bfs.BreadthFirstSearch(ug, 5);
 
-            Debug.WriteLine(bfs.ToString());
+            Assert.AreEqual(1, bfsStats.Dist[0]);
+            Assert.AreEqual(2, bfsStats.Dist[1]);
+            Assert.AreEqual(1, bfsStats.Dist[2]);
+            Assert.AreEqual(1, bfsStats.Dist[3]);
+            Assert.AreEqual(1, bfsStats.Dist[4]);
+            Assert.AreEqual(0, bfsStats.Dist[5]);
+
+            Debug.WriteLine(bfsStats);
         }
     }
 }

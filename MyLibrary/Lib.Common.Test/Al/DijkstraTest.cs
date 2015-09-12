@@ -13,13 +13,26 @@ namespace Lib.Common.Test.Al
     public class DijkstraTest
     {
         [TestMethod]
-        public void Test()
+        public void ShortestPath_Test()
         {
-            Dijkstra d = new Dijkstra(DirectedGraph.CreateGraph49());
+            var g = DirectedGraph.CreateGraph49();
+            var ds = Dijkstra.ShortestPath(g, 0);//start vertice: A
 
-            d.ShortestPath(0);
+            //previous node
+            Assert.AreEqual(-1, ds.Prev[0]);//start point set to -1
+            Assert.AreEqual(2, ds.Prev[1]);
+            Assert.AreEqual(0, ds.Prev[2]);
+            Assert.AreEqual(1, ds.Prev[3]);
+            Assert.AreEqual(1, ds.Prev[4]);
 
-            Debug.WriteLine(d.ToString());
+            //distanct
+            Assert.AreEqual(0, ds.Dist[0]);
+            Assert.AreEqual(3, ds.Dist[1]);
+            Assert.AreEqual(2, ds.Dist[2]);
+            Assert.AreEqual(5, ds.Dist[3]);
+            Assert.AreEqual(6, ds.Dist[4]);
+
+            Debug.WriteLine(ds);
         }
     }
 }

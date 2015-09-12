@@ -1,6 +1,6 @@
-﻿using Lib.Common.Al.Graph;
+﻿using System.Diagnostics;
+using Lib.Common.Al.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
 
 namespace Lib.Common.Test.Al
 {
@@ -8,70 +8,57 @@ namespace Lib.Common.Test.Al
     public class DfsTest
     {
         [TestMethod]
-        public void UndirectedGraph_Explore_Test()
+        public void UndirectedGraph32_Explore_Test()
         {
             var g = UndirectedGraph.CreateUndirectedGraph32();
-
             var dfs = new Dfs(g);
-            dfs.Explore(0);//explore Vertice A
-
-            Debug.WriteLine("");
+            dfs.Explore(0);     //explore Vertice A
             Debug.WriteLine(dfs.ToString());
         }
 
         [TestMethod]
-        public void UndirectedGraph_Dfs_Test()
+        public void UndirectedGraph36_DepthFirstSearch_Test()
         {
             var g = UndirectedGraph.CreateUndirectedGraph36();
-
             var dfs = new Dfs(g);
-            dfs.DepthFirstSearch();
-
-            Debug.WriteLine(dfs.ToString());
+            var dfsStats = dfs.DepthFirstSearch();
+            Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
-        public void DirectedGraph37_Explore_Test()
+        public void DirectedGraph37_DepthFirstSearch_Test()
         {
             var g = DirectedGraph.CreateGraph37();
-
             var dfs = new Dfs(g);
-            dfs.DepthFirstSearch();
-
-            Debug.WriteLine(dfs.ToString());
+            var dfsStats = dfs.DepthFirstSearch();
+            Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
-        public void DirectedGraph38_Explore_Test()
+        public void DirectedGraph38_DepthFirstSearch_Test()
         {
             var g = DirectedGraph.CreateGraph38();
-
             var dfs = new Dfs(g);
-            dfs.DepthFirstSearch();
-
-            Debug.WriteLine(dfs.ToString());
+            var dfsStats = dfs.DepthFirstSearch();
+            Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
-        public void DirectedGraph39_Explore_Test()
+        public void DirectedGraph39_DepthFirstSearch_Test()
         {
             var g = DirectedGraph.CreateGraph39();
-
             var dfs = new Dfs(g);
-            dfs.DepthFirstSearch();
-
-            Debug.WriteLine(dfs.ToString());
+            var dfsStats = dfs.DepthFirstSearch();
+            Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
         public void DirectedGraph39_StrongConnectedComponentAlgorithm_Test()
         {
             var g = DirectedGraph.CreateGraph39();
-
             var dfs = new Dfs(g);
-            dfs.StrongConnectedComponentAlgorithm();
-
-            Debug.WriteLine(dfs.ToString());
+            var dfsStats = dfs.StrongConnectedComponentAlgorithm();
+            Debug.WriteLine(dfsStats);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Lib.Common.Al.Graph
         }
     }
 
-    public class DijKstraStats
+    public class DijkstraStats
     {
         //distance for each vertice from a start vertice
         private readonly int[] _dist;
@@ -25,7 +25,7 @@ namespace Lib.Common.Al.Graph
         //previous vertice for each vertice
         private readonly int[] _prev;
 
-        public DijKstraStats(int V)
+        public DijkstraStats(int V)
         {
             _dist = new int[V];
             for (var i = 0; i < _dist.Length; i++)

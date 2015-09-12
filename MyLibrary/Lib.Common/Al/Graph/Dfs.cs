@@ -26,7 +26,7 @@ namespace Lib.Common.Al.Graph
             _G = G;
         }
 
-        public void DepthFirstSearch()
+        public DfsStats DepthFirstSearch()
         {
             for (var i = 0; i < _G.V; i++)
                 _dfsStats.Visited[i] = false;
@@ -37,9 +37,11 @@ namespace Lib.Common.Al.Graph
                     _componentCount++;
                     Explore(i);
                 }
+
+            return _dfsStats;
         }
 
-        public void StrongConnectedComponentAlgorithm()
+        public DfsStats StrongConnectedComponentAlgorithm()
         {
             (_G as DirectedGraph).ReverseGraph();//reverse G
             DepthFirstSearch();
@@ -57,6 +59,8 @@ namespace Lib.Common.Al.Graph
                     Explore(v);
                 }
             }
+
+            return _dfsStats;
         }
 
         public void Explore(int v)
