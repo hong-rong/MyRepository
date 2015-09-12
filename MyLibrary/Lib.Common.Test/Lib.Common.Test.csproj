@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Al\BfsTest.cs" />
-    <Compile Include="Al\GeneralGraphShortestPathTest.cs" />
+    <Compile Include="Al\BellmanFordTest.cs" />
+    <Compile Include="Al\DagShortestPathTest.cs" />
     <Compile Include="Al\DfsTest.cs" />
     <Compile Include="Al\DijkstraTest.cs" />
     <Compile Include="Al\DirectGraphTest.cs" />

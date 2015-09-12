@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Lib.Common.Al.Graph
 {
+    /// <summary>
+    /// Shortest path for DAG
+    /// </summary>
     public class DagShortestPath
     {
         public static ShortestPathStats ShortestPath(DirectedGraph g, int s)
@@ -29,9 +32,9 @@ namespace Lib.Common.Al.Graph
             {
                 foreach (var v in g.Adjacent(u))
                 {
-                    if (stats.Dist[v.V2] > stats.Dist[v.V2] + v.Weight)
+                    if (stats.Dist[v.V2] > stats.Dist[v.V1] + v.Weight)
                     {
-                        stats.Dist[v.V2] = stats.Dist[v.V2] + v.Weight;
+                        stats.Dist[v.V2] = stats.Dist[v.V1] + v.Weight;
                         stats.Prev[v.V2] = u;
                     }
                 }

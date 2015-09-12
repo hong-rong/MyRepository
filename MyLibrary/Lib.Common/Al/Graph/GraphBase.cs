@@ -104,7 +104,7 @@ namespace Lib.Common.Al.Graph
                 {
                     foreach (var e in Al[i])
                     {
-                        sb.Append(string.Format("{0} ", e));
+                        sb.Append(string.Format("{0}, ", e));
                     }
 
                 }

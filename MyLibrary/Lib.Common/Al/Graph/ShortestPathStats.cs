@@ -49,14 +49,12 @@ namespace Lib.Common.Al.Graph
             {
                 sb.AppendLine(string.Format("{0}: {1}", i, Prev[i].ToString()));
             }
-            sb.AppendLine();
 
             sb.AppendLine("Vertice distance:");
             for (int i = 0; i < Dist.Length; i++)
             {
                 sb.AppendLine(string.Format("{0}: {1}", i, Dist[i]));
             }
-            sb.AppendLine();
 
             return sb.ToString();
         }

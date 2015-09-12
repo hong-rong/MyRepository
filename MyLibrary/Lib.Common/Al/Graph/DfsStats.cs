@@ -13,6 +13,11 @@ namespace Lib.Common.Al.Graph
         {
             return new Edge { V1 = V2, V2 = V1, Weight = Weight };
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} to {1} with weight: {2}", V1, V2, Weight);
+        }
     }
 
     public enum Color
