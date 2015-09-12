@@ -11,7 +11,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void Adjacent_Test()
         {
-            var ug = UndirectedGraph.CreateUndirectedGraph32();
+            var ug = GraphFactory.CreateUndirectedGraph32();
 
             //vertice A
             Assert.AreEqual(3, ug.Adjacent(0).Count());
@@ -46,7 +46,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void AddEdge_Char_Test()
         {
-            var ug = UndirectedGraph.CreateUndirectedGraph41();
+            var ug = GraphFactory.CreateUndirectedGraph41();
 
             Debug.WriteLine(ug.ToString());
         }

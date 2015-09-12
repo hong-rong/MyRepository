@@ -15,7 +15,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void ShortestPath_Test()
         {
-            var g = DirectedGraph.CreateGraph49();
+            var g = GraphFactory.CreateGraph49();
             var ds = Dijkstra.ShortestPath(g, 0);//start vertice: A
 
             //previous node

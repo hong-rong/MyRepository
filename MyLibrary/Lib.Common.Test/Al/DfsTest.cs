@@ -10,7 +10,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void UndirectedGraph32_Explore_Test()
         {
-            var g = UndirectedGraph.CreateUndirectedGraph32();
+            var g = GraphFactory.CreateUndirectedGraph32();
             var dfs = new Dfs(g);
             dfs.Explore(0);     //explore Vertice A
             Debug.WriteLine(dfs.ToString());
@@ -19,7 +19,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void UndirectedGraph36_DepthFirstSearch_Test()
         {
-            var g = UndirectedGraph.CreateUndirectedGraph36();
+            var g = GraphFactory.CreateUndirectedGraph36();
             var dfs = new Dfs(g);
             var dfsStats = dfs.DepthFirstSearch();
             Debug.WriteLine(dfsStats);
@@ -28,7 +28,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void DirectedGraph37_DepthFirstSearch_Test()
         {
-            var g = DirectedGraph.CreateGraph37();
+            var g = GraphFactory.CreateGraph37();
             var dfs = new Dfs(g);
             var dfsStats = dfs.DepthFirstSearch();
             Debug.WriteLine(dfsStats);
@@ -37,7 +37,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void DirectedGraph38_DepthFirstSearch_Test()
         {
-            var g = DirectedGraph.CreateGraph38();
+            var g = GraphFactory.CreateGraph38();
             var dfs = new Dfs(g);
             var dfsStats = dfs.DepthFirstSearch();
             Debug.WriteLine(dfsStats);
@@ -46,7 +46,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void DirectedGraph39_DepthFirstSearch_Test()
         {
-            var g = DirectedGraph.CreateGraph39();
+            var g = GraphFactory.CreateGraph39();
             var dfs = new Dfs(g);
             var dfsStats = dfs.DepthFirstSearch();
             Debug.WriteLine(dfsStats);
@@ -55,7 +55,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void DirectedGraph39_StrongConnectedComponentAlgorithm_Test()
         {
-            var g = DirectedGraph.CreateGraph39();
+            var g = GraphFactory.CreateGraph39();
             var dfs = new Dfs(g);
             var dfsStats = dfs.StrongConnectedComponentAlgorithm();
             Debug.WriteLine(dfsStats);

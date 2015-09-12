@@ -15,7 +15,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void BreadthFirstSearch_Test()
         {
-            var ug = UndirectedGraph.CreateUndirectedGraph41();
+            var ug = GraphFactory.CreateUndirectedGraph41();
             var bfsStats = Bfs.BreadthFirstSearch(ug, 5);
 
             Assert.AreEqual(1, bfsStats.Dist[0]);

@@ -53,6 +53,8 @@
     <Compile Include="Al\Graph\DfsStats.cs" />
     <Compile Include="Al\Graph\Dfs.cs" />
     <Compile Include="Al\Graph\GraphBase.cs" />
+    <Compile Include="Al\Graph\GraphFactory.cs" />
+    <Compile Include="Al\Graph\ShortestPathInDag.cs" />
     <Compile Include="Al\Graph\UndirectedGraph.cs" />
     <Compile Include="Ds\Bst\BST.cs" />
     <Compile Include="Ds\Bst\BSTNode.cs" />
