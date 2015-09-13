@@ -12,16 +12,16 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class BellmanFord
     {
-        public static ShortestPathStats ShortestPath(GraphBase g, int s)
+        public static PathStats ShortestPath(GraphBase g, int s)
         {
             #region Initialization
-            var ss = new ShortestPathStats(g.V);
-            for (int i = 0; i < ss.Dist.Length; i++)
+            var ps = new PathStats(g.V);
+            for (int i = 0; i < ps.Dist.Length; i++)
             {
-                ss.Dist[i] = int.MaxValue;
-                ss.Prev[i] = -1;
+                ps.Dist[i] = int.MaxValue;
+                ps.Prev[i] = -1;
             }
-            ss.Dist[s] = 0;
+            ps.Dist[s] = 0;
             #endregion
 
             for (int i = 0; i < g.V - 1; i++)//run |V|-1 times
@@ -30,17 +30,17 @@ namespace Lib.Common.Al.Graph
                 {
                     foreach (var e in g.Adjacent(u))
                     {
-                        if (ss.Dist[u] == int.MaxValue)//if distance of u hasn't ever be udpated, skip
+                        if (ps.Dist[u] == int.MaxValue)//if distance of u hasn't ever be udpated, skip
                             break;
-                        if (ss.Dist[e.V2] > ss.Dist[e.V1] + e.Weight)
+                        if (ps.Dist[e.V2] > ps.Dist[e.V1] + e.Weight)
                         {
-                            ss.Dist[e.V2] = ss.Dist[e.V1] + e.Weight;
-                            ss.Prev[e.V2] = u;
+                            ps.Dist[e.V2] = ps.Dist[e.V1] + e.Weight;
+                            ps.Prev[e.V2] = u;
                         }
                     }
                 }
             }
-            return ss;
+            return ps;
         }
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Al\DfsTest.cs" />
     <Compile Include="Al\DijkstraTest.cs" />
     <Compile Include="Al\DirectGraphTest.cs" />
+    <Compile Include="Al\LongestIncreasingSequenceTest.cs" />
     <Compile Include="Al\UndirectedGraphTest.cs" />
     <Compile Include="Ds\BSTTests.cs" />
     <Compile Include="Ds\Bs\BinarySearchSTTests.cs" />

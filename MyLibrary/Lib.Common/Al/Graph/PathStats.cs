@@ -17,7 +17,7 @@ namespace Lib.Common.Al.Graph
         }
     }
 
-    public class ShortestPathStats
+    public class PathStats
     {
         //distance for each vertice from a start vertice
         private readonly int[] _dist;
@@ -33,7 +33,7 @@ namespace Lib.Common.Al.Graph
             get { return _prev; }
         }
 
-        public ShortestPathStats(int V)
+        public PathStats(int V)
         {
             _dist = new int[V];
             _prev = new int[V];
@@ -41,8 +41,8 @@ namespace Lib.Common.Al.Graph
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Shortest path:");
+            var sb = new StringBuilder();
+            sb.AppendLine("Path:");
             for (int i = 0; i < Prev.Length; i++)
             {
                 sb.AppendLine(string.Format("{0}: {1}", i, Prev[i].ToString()));

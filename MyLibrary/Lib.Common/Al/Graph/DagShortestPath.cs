@@ -12,10 +12,10 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class DagShortestPath
     {
-        public static ShortestPathStats ShortestPath(DirectedGraph g, int s)
+        public static PathStats ShortestPath(DirectedGraph g, int s)
         {
             #region Initialization
-            var stats = new ShortestPathStats(g.V);
+            var stats = new PathStats(g.V);
             for (int i = 0; i < stats.Dist.Length; i++)
             {
                 stats.Dist[i] = int.MaxValue;

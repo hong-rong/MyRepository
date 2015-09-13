@@ -50,7 +50,7 @@
     <Compile Include="Al\Graph\BfsStats.cs" />
     <Compile Include="Al\Graph\Dijkstra.cs" />
     <Compile Include="Al\Graph\BellmanFord.cs" />
-    <Compile Include="Al\Graph\ShortestPathStats.cs" />
+    <Compile Include="Al\Graph\PathStats.cs" />
     <Compile Include="Al\Graph\DirectedGraph.cs" />
     <Compile Include="Al\Graph\DfsStats.cs" />
     <Compile Include="Al\Graph\Dfs.cs" />
