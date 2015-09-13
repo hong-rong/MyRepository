@@ -21,24 +21,22 @@ namespace Lib.Common.Al.Graph
     {
         //distance for each vertice from a start vertice
         private readonly int[] _dist;
-
-        //previous vertice for each vertice
-        private readonly int[] _prev;
-
-        public ShortestPathStats(int V)
-        {
-            _dist = new int[V];
-            _prev = new int[V];
-        }
-
         public int[] Dist
         {
             get { return _dist; }
         }
 
+        //previous vertice for each vertice
+        private readonly int[] _prev;
         public int[] Prev
         {
             get { return _prev; }
+        }
+
+        public ShortestPathStats(int V)
+        {
+            _dist = new int[V];
+            _prev = new int[V];
         }
 
         public override string ToString()

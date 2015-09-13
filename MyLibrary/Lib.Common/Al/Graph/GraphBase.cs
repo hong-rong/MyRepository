@@ -84,6 +84,8 @@ namespace Lib.Common.Al.Graph
 
         public abstract void AddEdge(int u, int v);
 
+        public abstract void AddEdge(int u, int v, int weight);
+
         public abstract void AddEdge(Edge e);
 
         public abstract void RemoveEdge(Edge e);

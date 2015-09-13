@@ -11,17 +11,16 @@ namespace Lib.Common.Test.Al
         public void UndirectedGraph32_Explore_Test()
         {
             var g = GraphFactory.CreateUndirectedGraph32();
-            var dfs = new Dfs(g.V);
-            dfs.Explore(g, 0);     //explore Vertice A
-            Debug.WriteLine(dfs.ToString());
+            DfsStats _stats = new DfsStats(g.V);
+            Dfs.Explore(g, 0, _stats);     //explore Vertice A
+            Debug.WriteLine(_stats.ToString());
         }
 
         [TestMethod]
         public void UndirectedGraph36_DepthFirstSearch_Test()
         {
             var g = GraphFactory.CreateUndirectedGraph36();
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.DepthFirstSearch(g);
+            var dfsStats = Dfs.DepthFirstSearch(g);
             Debug.WriteLine(dfsStats);
         }
 
@@ -29,17 +28,15 @@ namespace Lib.Common.Test.Al
         public void DirectedGraph37_DepthFirstSearch_Test()
         {
             var g = GraphFactory.CreateDirectGraph37();
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.DepthFirstSearch(g);
+            var dfsStats = Dfs.DepthFirstSearch(g);
             Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
         public void DirectedGraph38_Linearization_Test()
         {
-            var g = GraphFactory.CreateDirectGraph38();
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.DepthFirstSearch(g);
+            var g = GraphFactory.CreateDirectedGraph38();
+            var dfsStats = Dfs.DepthFirstSearch(g);
             var l = dfsStats.Linearization.ToArray();
             Assert.AreEqual(1, l[0]);
             Assert.AreEqual(3, l[1]);
@@ -53,18 +50,16 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void DirectedGraph39_DepthFirstSearch_Test()
         {
-            var g = GraphFactory.CreateDirectGraph39();
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.DepthFirstSearch(g);
+            var g = GraphFactory.CreateDirectedGraph39();
+            var dfsStats = Dfs.DepthFirstSearch(g);
             Debug.WriteLine(dfsStats);
         }
 
         [TestMethod]
         public void DirectedGraph39_StrongConnectedComponentAlgorithm_Test()
         {
-            var g = GraphFactory.CreateDirectGraph39();
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.StrongConnectedComponentAlgorithm(g);
+            var g = GraphFactory.CreateDirectedGraph39();
+            var dfsStats = Dfs.StrongConnectedComponentAlgorithm(g);
             Debug.WriteLine(dfsStats);
         }
     }

@@ -32,20 +32,67 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class DfsStats
     {
+        private int _componentCount;//intermediate value for depth first search
+        public int ComponentCount
+        {
+            get { return _componentCount; }
+            set { _componentCount = value; }
+        }
+
+        private int _clock;//intermediate value for depth first search
+        public int Clock
+        {
+            get { return _clock; }
+            set { _clock = value; }
+        }
+
         private readonly int[] _preVisit;
+        public int[] PreVisit
+        {
+            get { return _preVisit; }
+        }
+
         private readonly bool[] _visited;
+        public bool[] Visited
+        {
+            get { return _visited; }
+        }
+
         private readonly int[] _postVisit;
+        public int[] PostVisit
+        {
+            get { return _postVisit; }
+        }
+
         private readonly int[] _componentNum;
+        public int[] ComponentNum
+        {
+            get { return _componentNum; }
+        }
 
         private readonly System.Collections.Generic.List<Edge> _treeDeges;//tree dege or forward edge
+        public System.Collections.Generic.List<Edge> TreeEdges { get { return _treeDeges; } }
+
         private readonly System.Collections.Generic.List<Edge> _backEdges;
+        public System.Collections.Generic.List<Edge> BackEdges { get { return _backEdges; } }
+
         private readonly System.Collections.Generic.List<Edge> _crossEdges;
+        public System.Collections.Generic.List<Edge> CrossEdges { get { return _crossEdges; } }
+
         private readonly Color[] _colors;
+        public Color[] Colors { get { return _colors; } }
 
         private readonly LinkedList<int> _linearization;//topological sort
+        public LinkedList<int> Linearization
+        {
+            get { return _linearization; }
+        }
 
         public DfsStats(int V)
         {
+            _componentCount = 0;
+            _clock = 1;
+
             _preVisit = new int[V];
             _visited = new bool[V];
             _postVisit = new int[V];
@@ -59,16 +106,6 @@ namespace Lib.Common.Al.Graph
             _linearization = new LinkedList<int>();
         }
 
-        public int[] PreVisit
-        {
-            get { return _preVisit; }
-        }
-
-        public bool[] Visited
-        {
-            get { return _visited; }
-        }
-
         public void ResetStats()
         {
             for (int i = 0; i < Visited.Length; i++)
@@ -78,29 +115,6 @@ namespace Lib.Common.Al.Graph
                 PostVisit[i] = -1;
                 ComponentNum[i] = -1;
             }
-        }
-
-        public int[] PostVisit
-        {
-            get { return _postVisit; }
-        }
-
-        public int[] ComponentNum
-        {
-            get { return _componentNum; }
-        }
-
-        public System.Collections.Generic.List<Edge> TreeEdges { get { return _treeDeges; } }
-
-        public System.Collections.Generic.List<Edge> BackEdges { get { return _backEdges; } }
-
-        public System.Collections.Generic.List<Edge> CrossEdges { get { return _crossEdges; } }
-
-        public Color[] Colors { get { return _colors; } }
-
-        public LinkedList<int> Linearization
-        {
-            get { return _linearization; }
         }
 
         public override string ToString()

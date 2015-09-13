@@ -23,8 +23,13 @@
 
         public override void AddEdge(int u, int v)
         {
-            Al[u].AddLast(new Edge { V1 = u, V2 = v });
-            Al[v].AddLast(new Edge { V1 = v, V2 = u });
+            AddEdge(u, v, 0);
+        }
+
+        public override void AddEdge(int u, int v, int weight)
+        {
+            Al[u].AddLast(new Edge { V1 = u, V2 = v, Weight = weight });
+            Al[v].AddLast(new Edge { V1 = v, V2 = u, Weight = weight });
             _E++;
         }
 

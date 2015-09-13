@@ -15,7 +15,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void ShortestPath_Test()
         {
-            var g = GraphFactory.GreateDirectGraph414();
+            var g = GraphFactory.GreateDirectedGraph414();
             var stats = BellmanFord.ShortestPath(g, 7);//node char 'S' is 7
             Assert.AreEqual(5, stats.Dist[0]);
             Assert.AreEqual(5, stats.Dist[1]);

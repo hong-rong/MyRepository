@@ -24,8 +24,7 @@ namespace Lib.Common.Al.Graph
             stats.Dist[s] = 0;
             #endregion
 
-            var dfs = new Dfs(g.V);
-            var dfsStats = dfs.DepthFirstSearch(g);
+            var dfsStats = Dfs.DepthFirstSearch(g);
             var linearization = dfsStats.Linearization;
             Debug.WriteLine(dfsStats);
             foreach (var u in linearization)

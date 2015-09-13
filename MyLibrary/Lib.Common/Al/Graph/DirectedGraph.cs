@@ -48,7 +48,12 @@ namespace Lib.Common.Al.Graph
 
         public override void AddEdge(int u, int v)
         {
-            Al[u].AddLast(new Edge { V1 = u, V2 = v });
+            AddEdge(u, v, 0);
+        }
+
+        public override void AddEdge(int u, int v, int weight)
+        {
+            Al[u].AddLast(new Edge { V1 = u, V2 = v, Weight = weight });
             _E++;
         }
 

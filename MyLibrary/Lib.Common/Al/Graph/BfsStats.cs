@@ -9,6 +9,10 @@ namespace Lib.Common.Al.Graph
     {
         //distance for each vertice from a start vertice
         private readonly int[] _dist;
+        public int[] Dist
+        {
+            get { return _dist; }
+        }
 
         public BfsStats(int V)
         {
@@ -17,11 +21,6 @@ namespace Lib.Common.Al.Graph
             {
                 _dist[i] = int.MaxValue;
             }
-        }
-
-        public int[] Dist
-        {
-            get { return _dist; }
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lib.Common.Ds.Ll;
+using System;
 using System.Diagnostics;
 using System.Text;
 
@@ -9,87 +10,94 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class Dfs
     {
-        private DfsStats _stats;
-        private int _componentCount;
-        private int _clock;
-
-        public Dfs(int V)
+        public static DfsStats DepthFirstSearch(GraphBase g)
         {
-            _stats = new DfsStats(V);
-            _componentCount = 0;
-            _clock = 1;
-        }
-
-        public DfsStats DepthFirstSearch(GraphBase g)
-        {
-            for (var i = 0; i < g.V; i++)
-                _stats.Visited[i] = false;
+            var ds = new DfsStats(g.V);
 
             for (var i = 0; i < g.V; i++)
-                if (!_stats.Visited[i])
+                ds.Visited[i] = false;
+
+            for (var i = 0; i < g.V; i++)
+                if (!ds.Visited[i])
                 {
-                    _componentCount++;
-                    Explore(g, i);
+                    ds.ComponentCount++;
+                    Explore(g, i, ds);
                 }
 
-            return _stats;
+            return ds;
         }
 
-        public DfsStats StrongConnectedComponentAlgorithm(DirectedGraph g)
+        public static LinkedList<int> GetLinearization(GraphBase g)
+        {
+            return DepthFirstSearch(g).Linearization;
+        }
+
+        public static DfsStats StrongConnectedComponentAlgorithm(DirectedGraph g)
         {
             g.ReverseGraph();//reverse G
-            var stats = DepthFirstSearch(g);
-            var linearization = _stats.Linearization;
+            var linearization = GetLinearization(g);
 
-            _stats = new DfsStats(g.V);
-            _clock = 1;
-            _componentCount = 0;
+            var ds = new DfsStats(g.V);
+            ds.Clock = 1;
+            ds.ComponentCount = 0;
 
             (g as DirectedGraph).ReverseGraph();//reverse G back
             foreach (var v in linearization)
             {
-                if (!_stats.Visited[v])
+                if (!ds.Visited[v])
                 {
-                    _componentCount++;
-                    Explore(g, v);
+                    ds.ComponentCount++;
+                    Explore(g, v, ds);
                 }
             }
 
-            return _stats;
+            return ds;
         }
 
-        public void Explore(GraphBase g, int v)
+        /// <summary>
+        /// Get predecessor of a DAG
+        /// </summary>
+        /// <param name="g">Graph g to be searched</param>
+        /// <returns>Predecessor of a node of a DAG</returns>
+        public static int GetSource(DirectedGraph g) 
         {
-            PreVisitVertice(v);
+            var ds = StrongConnectedComponentAlgorithm(g);
+
+            return ds.Linearization.ToArray()[0];
+        }
+
+        public static void Explore(GraphBase g, int v, DfsStats dfsStats)
+        {
+            PreVisitVertice(v, dfsStats);
 
             foreach (var e in g.Adjacent(v))
             {
-                if (!_stats.Visited[e.V2])
+                if (!dfsStats.Visited[e.V2])
                 {
-                    Explore(g, e.V2);
+                    Explore(g, e.V2, dfsStats);
                 }
                 //else if (e < v)
                 //only directed graph has 'back edge'
                 else if (g is DirectedGraph && e.V2 < v)//e < v is not right
                 {
-                    _stats.BackEdges.Add(new Edge { V1 = v, V2 = e.V2 });
+                    dfsStats.BackEdges.Add(new Edge { V1 = v, V2 = e.V2 });
                 }
             }
 
-            PostVisitVertice(v);
+            PostVisitVertice(v, dfsStats);
         }
 
-        private void PreVisitVertice(int v)
+        private static void PreVisitVertice(int v, DfsStats dfsStats)
         {
-            _stats.Visited[v] = true;
-            _stats.ComponentNum[v] = _componentCount;
-            _stats.PreVisit[v] = _clock++;
+            dfsStats.Visited[v] = true;
+            dfsStats.ComponentNum[v] = dfsStats.ComponentCount;
+            dfsStats.PreVisit[v] = dfsStats.Clock++;
         }
 
-        private void PostVisitVertice(int v)
+        private static void PostVisitVertice(int v, DfsStats dfsStats)
         {
-            _stats.PostVisit[v] = _clock++;
-            _stats.Linearization.AddFirst(v);
+            dfsStats.PostVisit[v] = dfsStats.Clock++;
+            dfsStats.Linearization.AddFirst(v);
         }
     }
 }

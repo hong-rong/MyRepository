@@ -95,7 +95,7 @@ namespace Lib.Common.Al.Graph
 
         #region Directed Graph
 
-        public static DirectedGraph CreateDirectGraph61()
+        public static DirectedGraph CreateDirectedGraph61()
         {
             var g = new DirectedGraph(6);
             g.AddEdge('A', 'B', 6);
@@ -109,7 +109,7 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
-        public static DirectedGraph GreateDirectGraph414()
+        public static DirectedGraph GreateDirectedGraph414()
         {
             var g = new DirectedGraph(8);
             g.AddEdge('A', 'E', 2);
@@ -126,7 +126,7 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
-        public static DirectedGraph CreateDirectGraph49()
+        public static DirectedGraph CreateDirectedGraph49()
         {
             var g = new DirectedGraph(5);
 
@@ -143,7 +143,7 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
-        public static DirectedGraph CreateDirectGraph39()
+        public static DirectedGraph CreateDirectedGraph39()
         {
             var g = new DirectedGraph(12);
 
@@ -182,7 +182,7 @@ namespace Lib.Common.Al.Graph
             return g;
         }
 
-        public static DirectedGraph CreateDirectGraph38()
+        public static DirectedGraph CreateDirectedGraph38()
         {
             var g = new DirectedGraph(6);
 

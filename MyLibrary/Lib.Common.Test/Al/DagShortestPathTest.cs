@@ -15,7 +15,7 @@ namespace Lib.Common.Test.Al
         [TestMethod]
         public void ShortestPath_Test()
         {
-            var g = GraphFactory.CreateDirectGraph61();
+            var g = GraphFactory.CreateDirectedGraph61();
             var stats = DagShortestPath.ShortestPath(g, 5);//node char 'S' is 5
             Assert.AreEqual(1, stats.Dist[0]);
             Assert.AreEqual(7, stats.Dist[1]);
