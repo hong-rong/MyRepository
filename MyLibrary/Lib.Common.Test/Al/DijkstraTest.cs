@@ -1,11 +1,6 @@
 ﻿using Lib.Common.Al.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lib.Common.Test.Al
 {

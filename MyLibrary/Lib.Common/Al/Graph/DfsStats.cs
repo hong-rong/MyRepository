@@ -32,19 +32,11 @@ namespace Lib.Common.Al.Graph
     /// </summary>
     public class DfsStats
     {
-        private int _componentCount;//intermediate value for depth first search
-        public int ComponentCount
-        {
-            get { return _componentCount; }
-            set { _componentCount = value; }
-        }
+        //intermediate value for depth first search
+        public int ComponentCount { get; set; }
 
-        private int _clock;//intermediate value for depth first search
-        public int Clock
-        {
-            get { return _clock; }
-            set { _clock = value; }
-        }
+        //intermediate value for depth first search
+        public int Clock { get; set; }
 
         private readonly int[] _preVisit;
         public int[] PreVisit
@@ -90,8 +82,8 @@ namespace Lib.Common.Al.Graph
 
         public DfsStats(int V)
         {
-            _componentCount = 0;
-            _clock = 1;
+            ComponentCount = 0;
+            Clock = 1;
 
             _preVisit = new int[V];
             _visited = new bool[V];

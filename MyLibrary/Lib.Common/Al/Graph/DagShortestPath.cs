@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace Lib.Common.Al.Graph
 {
@@ -16,7 +11,7 @@ namespace Lib.Common.Al.Graph
         {
             #region Initialization
             var stats = new PathStats(g.V);
-            for (int i = 0; i < stats.Dist.Length; i++)
+            for (var i = 0; i < stats.Dist.Length; i++)
             {
                 stats.Dist[i] = int.MaxValue;
                 stats.Prev[i] = -1;

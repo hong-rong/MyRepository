@@ -1,7 +1,4 @@
 ﻿using Lib.Common.Ds.Ll;
-using System;
-using System.Diagnostics;
-using System.Text;
 
 namespace Lib.Common.Al.Graph
 {
@@ -37,11 +34,9 @@ namespace Lib.Common.Al.Graph
             g.ReverseGraph();//reverse G
             var linearization = GetLinearization(g);
 
-            var ds = new DfsStats(g.V);
-            ds.Clock = 1;
-            ds.ComponentCount = 0;
+            var ds = new DfsStats(g.V) { Clock = 1, ComponentCount = 0 };
 
-            (g as DirectedGraph).ReverseGraph();//reverse G back
+            g.ReverseGraph();//reverse G back
             foreach (var v in linearization)
             {
                 if (!ds.Visited[v])
@@ -59,7 +54,7 @@ namespace Lib.Common.Al.Graph
         /// </summary>
         /// <param name="g">Graph g to be searched</param>
         /// <returns>Predecessor of a node of a DAG</returns>
-        public static int GetSource(DirectedGraph g) 
+        public static int GetSource(DirectedGraph g)
         {
             var ds = StrongConnectedComponentAlgorithm(g);
 

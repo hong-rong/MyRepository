@@ -43,13 +43,13 @@ namespace Lib.Common.Al.Graph
         {
             var sb = new StringBuilder();
             sb.AppendLine("Path:");
-            for (int i = 0; i < Prev.Length; i++)
+            for (var i = 0; i < Prev.Length; i++)
             {
                 sb.AppendLine(string.Format("{0}: {1}", i, Prev[i].ToString()));
             }
 
             sb.AppendLine("Vertice distance:");
-            for (int i = 0; i < Dist.Length; i++)
+            for (var i = 0; i < Dist.Length; i++)
             {
                 sb.AppendLine(string.Format("{0}: {1}", i, Dist[i]));
             }

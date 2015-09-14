@@ -99,7 +99,7 @@ namespace Lib.Common.Al.Graph
         {
             var sb = new StringBuilder();
             sb.AppendLine("Graph has following vertices and edges:");
-            for (int i = 0; i < V; i++)
+            for (var i = 0; i < V; i++)
             {
                 sb.Append(string.Format("{0}: ", i));
                 if (Al[i].Size() > 0)

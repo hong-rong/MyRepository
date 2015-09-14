@@ -13,8 +13,8 @@
 
         public override void AddEdge(char u, char v, int weight)
         {
-            int nu = GetMappedNumber(u);
-            int nv = GetMappedNumber(v);
+            var nu = GetMappedNumber(u);
+            var nv = GetMappedNumber(v);
             Al[nu].AddLast(new Edge { V1 = nu, V2 = nv, Weight = weight });
             Al[nv].AddLast(new Edge { V1 = nv, V2 = nu, Weight = weight });
 

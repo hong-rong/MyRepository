@@ -18,9 +18,9 @@ namespace Lib.Common.Test.Al
 
             //vertice B
             Assert.AreEqual(3, ug.Adjacent(1).Count());
-            Assert.AreEqual(0, ug.Adjacent(1).ToList()[0]);
-            Assert.AreEqual(4, ug.Adjacent(1).ToList()[1]);
-            Assert.AreEqual(5, ug.Adjacent(1).ToList()[2]);
+            Assert.AreEqual(0, ug.Adjacent(1).ToList()[0].V2);
+            Assert.AreEqual(4, ug.Adjacent(1).ToList()[1].V2);
+            Assert.AreEqual(5, ug.Adjacent(1).ToList()[2].V2);
         }
 
         [TestMethod]

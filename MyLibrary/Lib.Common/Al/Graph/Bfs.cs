@@ -13,8 +13,8 @@
         /// <returns>Breadth-first search results</returns>
         public static BfsStats BreadthFirstSearch(GraphBase g, int s)
         {
-            var _bfsStats = new BfsStats(g.V);
-            _bfsStats.Dist[s] = 0;
+            var stats = new BfsStats(g.V);
+            stats.Dist[s] = 0;
 
             var q = new Ds.Queue.Queue<int>();
             q.Enqueue(s);
@@ -23,15 +23,15 @@
                 var u = q.Dequeue();
                 foreach (var e in g.Adjacent(u))
                 {
-                    if (_bfsStats.Dist[e.V2] == int.MaxValue)
+                    if (stats.Dist[e.V2] == int.MaxValue)
                     {
                         q.Enqueue(e.V2);
-                        _bfsStats.Dist[e.V2] = _bfsStats.Dist[u] + 1;
+                        stats.Dist[e.V2] = stats.Dist[u] + 1;
                     }
                 }
             }
 
-            return _bfsStats;
+            return stats;
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Lib.Common.Test.Al
         public void UndirectedGraph32_Explore_Test()
         {
             var g = GraphFactory.CreateUndirectedGraph32();
-            DfsStats _stats = new DfsStats(g.V);
-            Dfs.Explore(g, 0, _stats);     //explore Vertice A
-            Debug.WriteLine(_stats.ToString());
+            var stats = new DfsStats(g.V);
+            Dfs.Explore(g, 0, stats);     //explore Vertice A
+            Debug.WriteLine(stats.ToString());
         }
 
         [TestMethod]
