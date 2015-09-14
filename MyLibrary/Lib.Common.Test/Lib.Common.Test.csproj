@@ -53,6 +53,7 @@
     <Compile Include="Ds\Bs\BinarySearchTestBase.cs" />
     <Compile Include="Ds\Bs\BinarySearchTests.cs" />
     <Compile Include="Ds\LinkedListTest.cs" />
+    <Compile Include="Ds\Pq\MaxPQTest.cs" />
     <Compile Include="Ds\Pq\MinPQTest.cs" />
     <Compile Include="Ds\QueueTests.cs" />
     <Compile Include="Ds\SequentialSearchSTTests.cs" />

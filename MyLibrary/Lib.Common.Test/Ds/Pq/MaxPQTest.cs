@@ -5,22 +5,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Lib.Common.Test.Ds.Pq
 {
     [TestClass]
-    public class MinPQTest
+    public class MaxPQTest
     {
-        private MinPQ<Distance> _target;
+        private MaxPQ<Distance> _target;
 
         [TestInitialize]
         public void Initialize()
         {
-            _target = new MinPQ<Distance>();
+            _target = new MaxPQ<Distance>();
         }
 
         [TestMethod]
         public void Test()
         {
-            var d1 = new Distance { V = 0, Dist = 3 };
+            var d1 = new Distance { V = 0, Dist = 1 };
             var d2 = new Distance { V = 0, Dist = 2 };
-            var d3 = new Distance { V = 0, Dist = 1 };
+            var d3 = new Distance { V = 0, Dist = 3 };
 
             _target.Insert(d1);
             _target.Insert(d2);

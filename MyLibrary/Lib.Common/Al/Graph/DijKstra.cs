@@ -11,7 +11,34 @@ namespace Lib.Common.Al.Graph
         /// <param name="s">Start vertice</param>
         public static PathStats ShortestPath(GraphBase g, int s)
         {
-            return GetPathStats(g, s, true);
+            var ps = new PathStats(g.V);
+
+            for (var i = 0; i < ps.Dist.Length; i++)
+            {
+                ps.Dist[i] = int.MaxValue;
+                ps.Prev[i] = -1;
+            }
+
+            ps.Dist[s] = 0;//start vertice
+            var pq = new MinPQ<Distance>(ps.Dist.Length);
+            pq.Insert(new Distance { Dist = 0, V = s });
+
+            while (!pq.IsEmpty())
+            {
+                var v = pq.DelRoot();
+
+                foreach (var e in g.Adjacent(v.V))
+                {
+                    if (ps.Dist[e.V2] > ps.Dist[v.V] + e.Weight)
+                    {
+                        ps.Dist[e.V2] = ps.Dist[v.V] + e.Weight;
+                        ps.Prev[e.V2] = v.V;
+                        pq.Insert(new Distance { V = e.V2, Dist = ps.Dist[e.V2] });
+                    }
+                }
+            }
+
+            return ps;
         }
 
         /// <summary>
@@ -21,7 +48,34 @@ namespace Lib.Common.Al.Graph
         /// <param name="s">Start vertice</param>
         public static PathStats LongestPath(GraphBase g, int s)
         {
-            return GetPathStats(g, s, false);
+            var ps = new PathStats(g.V);
+
+            for (var i = 0; i < ps.Dist.Length; i++)
+            {
+                ps.Dist[i] = int.MinValue;
+                ps.Prev[i] = -1;
+            }
+
+            ps.Dist[s] = 0;//start vertice
+            var pq = new MaxPQ<Distance>(ps.Dist.Length);
+            pq.Insert(new Distance { Dist = 0, V = s });
+
+            while (!pq.IsEmpty())
+            {
+                var v = pq.DelRoot();
+
+                foreach (var e in g.Adjacent(v.V))
+                {
+                    if (ps.Dist[e.V2] < ps.Dist[v.V] + e.Weight)   //longest path
+                    {
+                        ps.Dist[e.V2] = ps.Dist[v.V] + e.Weight;
+                        ps.Prev[e.V2] = v.V;
+                        pq.Insert(new Distance { V = e.V2, Dist = ps.Dist[e.V2] });
+                    }
+                }
+            }
+
+            return ps;
         }
 
         private static PathStats GetPathStats(GraphBase g, int s, bool isShortest)
@@ -35,12 +89,12 @@ namespace Lib.Common.Al.Graph
             }
 
             ps.Dist[s] = 0;//start vertice
-            var pq = new MinPQ<Distance>(ps.Dist.Length);
+            var pq = isShortest ? new MinPQ<Distance>(ps.Dist.Length) : new MaxPQ<Distance>(ps.Dist.Length);
             pq.Insert(new Distance { Dist = 0, V = s });
 
             while (!pq.IsEmpty())
             {
-                var v = pq.DelMin();
+                var v = pq.DelRoot();
 
                 foreach (var e in g.Adjacent(v.V))
                 {

@@ -2,7 +2,7 @@
 using Ds.Common.SymbolTable;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ds.Test.St
+namespace Lib.Common.Test.Ds.St
 {
     [TestClass]
     public abstract class STTestBase

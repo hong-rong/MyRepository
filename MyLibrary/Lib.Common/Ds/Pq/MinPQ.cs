@@ -16,9 +16,9 @@ namespace Lib.Common.Ds.Pq
     /// <typeparam name="TKey">the generic type of key on this priority queue</typeparam>
     public class MinPQ<TKey> : IEnumerable<TKey>
     {
-        private TKey[] _pq;                           // store items at indices 1 to N
+        protected TKey[] _pq;                           // store items at indices 1 to N
         private int N;                              // number of items on priority queue
-        private readonly Comparer<TKey> _comparator; // optional comparator
+        protected readonly Comparer<TKey> _comparator; // optional comparator
 
         public MinPQ(int initCapacity)
         {
@@ -48,11 +48,11 @@ namespace Lib.Common.Ds.Pq
         {
             N = keys.Length;
             _pq = new TKey[keys.Length + 1];
-            for (int i = 0; i < N; i++)
+            for (var i = 0; i < N; i++)
                 _pq[i + 1] = keys[i];
-            for (int k = N / 2; k >= 1; k--)
+            for (var k = N / 2; k >= 1; k--)
                 Sink(k);
-            Assert.IsTrue(IsMinHeap());
+            Assert.IsTrue(IsHeap());
         }
 
         public bool IsEmpty()
@@ -77,8 +77,8 @@ namespace Lib.Common.Ds.Pq
         private void Resize(int capacity)
         {
             Assert.IsTrue(capacity > N);
-            TKey[] temp = new TKey[capacity];
-            for (int i = 1; i <= N; i++)
+            var temp = new TKey[capacity];
+            for (var i = 1; i <= N; i++)
             {
                 temp[i] = _pq[i];
             }
@@ -93,18 +93,22 @@ namespace Lib.Common.Ds.Pq
             // add x, and percolate it up to maintain heap invariant
             _pq[++N] = x;
             Swim(N);
-            Assert.IsTrue(IsMinHeap());
+            Assert.IsTrue(IsHeap());
         }
 
-        public TKey DelMin()
+        /// <summary>
+        /// remove min/max
+        /// </summary>
+        /// <returns></returns>
+        public TKey DelRoot()
         {
             if (IsEmpty()) throw new InvalidOperationException("Priority queue underflow");
             Exch(1, N);
-            TKey min = _pq[N--];
+            var min = _pq[N--];
             Sink(1);
             _pq[N + 1] = default(TKey);         // avoid loitering and help with garbage collection
             if ((N > 0) && (N == (_pq.Length - 1) / 4)) Resize(_pq.Length / 2);
-            Assert.IsTrue(IsMinHeap());
+            Assert.IsTrue(IsHeap());
             return min;
         }
 
@@ -113,7 +117,7 @@ namespace Lib.Common.Ds.Pq
         /// </summary>
         private void Swim(int k)
         {
-            while (k > 1 && Greater(k / 2, k))
+            while (k > 1 && Compare(k / 2, k))
             {
                 Exch(k, k / 2);
                 k = k / 2;
@@ -127,9 +131,9 @@ namespace Lib.Common.Ds.Pq
         {
             while (2 * k <= N)
             {
-                int j = 2 * k;
-                if (j < N && Greater(j, j + 1)) j++;
-                if (!Greater(k, j)) break;
+                var j = 2 * k;
+                if (j < N && Compare(j, j + 1)) j++;
+                if (!Compare(k, j)) break;
                 Exch(k, j);
                 k = j;
             }
@@ -138,16 +142,14 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Helper functions for compares and swaps.
         /// </summary>
-        private bool Greater(int i, int j)
+        protected virtual bool Compare(int i, int j)
         {
             if (_comparator == null)
             {
                 return ((IComparable<TKey>)_pq[i]).CompareTo(_pq[j]) > 0;
             }
-            else
-            {
-                return _comparator.Compare(_pq[i], _pq[j]) > 0;
-            }
+
+            return _comparator.Compare(_pq[i], _pq[j]) > 0;
         }
 
         /// <summary>
@@ -155,25 +157,27 @@ namespace Lib.Common.Ds.Pq
         /// </summary>
         private void Exch(int i, int j)
         {
-            TKey swap = _pq[i];
+            var swap = _pq[i];
             _pq[i] = _pq[j];
             _pq[j] = swap;
         }
 
-        // is pq[1..N] a min heap?
-        private bool IsMinHeap()
+        // is pq[1..N] a min/max heap?
+        private bool IsHeap()
         {
-            return IsMinHeap(1);
+            return IsHeap(1);
         }
 
-        // is subtree of pq[1..N] rooted at k a min heap?
-        private bool IsMinHeap(int k)
+        // is subtree of pq[1..N] rooted at k a min/max heap?
+        private bool IsHeap(int k)
         {
             if (k > N) return true;
             int left = 2 * k, right = 2 * k + 1;
-            if (left <= N && Greater(k, left)) return false;
-            if (right <= N && Greater(k, right)) return false;
-            return IsMinHeap(left) && IsMinHeap(right);
+            if (left <= N && Compare(k, left))
+                return false;
+            if (right <= N && Compare(k, right))
+                return false;
+            return IsHeap(left) && IsHeap(right);
         }
 
         public IEnumerator<TKey> GetEnumerator()

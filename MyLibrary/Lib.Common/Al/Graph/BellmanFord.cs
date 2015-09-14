@@ -19,7 +19,7 @@
 
             for (int i = 0; i < g.V - 1; i++)//run |V|-1 times
             {
-                for (int u = g.V - 1; u >= 0; u--)//'S' starts first, earlier to get finall status
+                for (var u = g.V - 1; u >= 0; u--)//'S' starts first, earlier to get finall status
                 {
                     foreach (var e in g.Adjacent(u))
                     {
