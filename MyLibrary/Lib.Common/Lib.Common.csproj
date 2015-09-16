@@ -85,6 +85,7 @@
     <Compile Include="Ds\Ll\ILinkedList.cs" />
     <Compile Include="Ds\Ll\LinkedList.cs" />
     <Compile Include="Ds\Ll\LinkListMock.cs" />
+    <Compile Include="Ds\Pq\IndexMinPQ.cs" />
     <Compile Include="Ds\Pq\MaxPQ.cs" />
     <Compile Include="Ds\Pq\MinPQ.cs" />
     <Compile Include="Ds\Queue\DoubleLinkNode.cs" />
