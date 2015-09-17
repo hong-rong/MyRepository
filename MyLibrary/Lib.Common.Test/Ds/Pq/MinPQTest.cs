@@ -16,7 +16,7 @@ namespace Lib.Common.Test.Ds.Pq
         }
 
         [TestMethod]
-        public void Test()
+        public void Inser_Test()
         {
             var d1 = new Distance { V = 0, Dist = 3 };
             var d2 = new Distance { V = 0, Dist = 2 };
