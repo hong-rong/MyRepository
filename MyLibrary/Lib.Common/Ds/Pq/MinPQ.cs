@@ -103,7 +103,7 @@ namespace Lib.Common.Ds.Pq
         public TKey DelRoot()
         {
             if (IsEmpty()) throw new InvalidOperationException("Priority queue underflow");
-            Exch(1, N);
+            Exchange(1, N);
             var min = _pq[N--];
             Sink(1);
             _pq[N + 1] = default(TKey);         // avoid loitering and help with garbage collection
@@ -119,7 +119,7 @@ namespace Lib.Common.Ds.Pq
         {
             while (k > 1 && Compare(k / 2, k))
             {
-                Exch(k, k / 2);
+                Exchange(k, k / 2);
                 k = k / 2;
             }
         }
@@ -134,7 +134,7 @@ namespace Lib.Common.Ds.Pq
                 var j = 2 * k;
                 if (j < N && Compare(j, j + 1)) j++;
                 if (!Compare(k, j)) break;
-                Exch(k, j);
+                Exchange(k, j);
                 k = j;
             }
         }
@@ -155,7 +155,7 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Helper functions for compares and swaps.
         /// </summary>
-        private void Exch(int i, int j)
+        private void Exchange(int i, int j)
         {
             var swap = _pq[i];
             _pq[i] = _pq[j];

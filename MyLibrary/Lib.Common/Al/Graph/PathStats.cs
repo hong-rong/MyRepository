@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace Lib.Common.Al.Graph
@@ -6,6 +7,7 @@ namespace Lib.Common.Al.Graph
     /// <summary>
     /// Vertice distance for Dijkstra's algorithm in priority queue
     /// </summary>
+    [DebuggerDisplay("V: {V}, Dist: {Dist}")]
     public class Distance : IComparable<Distance>
     {
         public int V { get; set; }

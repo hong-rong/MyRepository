@@ -5,9 +5,9 @@ namespace Lib.Common.Ds.Pq
     public class IndexMinPQ<TKey> where TKey : IComparable<TKey>
     {
         private readonly int _maxN;
-        private readonly int[] _pq;//internal heap structure 1-based indices
+        protected readonly int[] _pq;//internal heap structure 1-based indices
         private readonly int[] _qp;//inverse of _pq[], _qp[i] gives the position of i in _pq, (index j such that _pq[j] is i)
-        private readonly TKey[] _keys;//key values, _keys[i] stands for priority of i
+        protected readonly TKey[] _keys;//key values, _keys[i] stands for priority of i
         private int N;
 
         /// <summary>
@@ -29,6 +29,8 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Insert item, associate with index i
         /// </summary>
+        /// <param name="i">index i</param>
+        /// <param name="t">item associate index i</param>
         public void Insert(int i, TKey t)
         {
             if (i < 0 || i >= _maxN) throw new IndexOutOfRangeException();
@@ -41,24 +43,35 @@ namespace Lib.Common.Ds.Pq
             Swim(N);
         }
 
-        // <param name="i">heap structure index</param>
+        /// <summary>
+        /// move up smaller keys
+        /// </summary>
+        /// <param name="i">heap structure index</param>
         private void Swim(int i)
         {
-            while (i > 1 && Less(i, i / 2))
+            while (i > 1 && Compare(i, i / 2))
             {
                 Exchange(i, i / 2);
                 i = i / 2;
             }
         }
 
-        // <param name="i">heap structure index</param>
-        private bool Less(int i, int j)
+        /// <summary>
+        /// check if heap index i is less than j
+        /// </summary>
+        /// <param name="i">heap structure index</param>
+        /// <param name="j">heap structure index</param>
+        /// <returns></returns>
+        protected virtual bool Compare(int i, int j)
         {
             return _keys[_pq[i]].CompareTo(_keys[_pq[j]]) < 0;
         }
 
-        // <param name="i">heap structure index</param>
-        // <param name="j">heap structure index</param>
+        /// <summary>
+        /// Swap heap structure i and j 
+        /// </summary>
+        /// <param name="i">heap structure index</param>
+        /// <param name="j">heap structure index</param>
         private void Exchange(int i, int j)
         {
             var swap = _pq[i];
@@ -71,6 +84,8 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Change the item associated with i to t
         /// </summary>
+        /// <param name="i">inde i</param>
+        /// <param name="t">item associate with i</param>
         public void ChangeKey(int i, TKey t)
         {
             if (i < 0 || i >= _maxN) throw new IndexOutOfRangeException();
@@ -84,46 +99,54 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Remove a minimal item and return its index
         /// </summary>
-        public int DelMin()
+        /// <returns>index of removed minimal item</returns>
+        public int DelRoot()
         {
             if (IsEmpty()) throw new InvalidOperationException("Queue is empty");
             var min = _pq[1];
             Exchange(1, N);
+            N--;//before Sink
             Sink(1);
-            _keys[_pq[N]] = default(TKey);
+
+            _keys[_pq[N + 1]] = default(TKey);
             _qp[min] = -1;
-            _pq[N] = -1;//can be removed?
-            N--;
+            //_pq[N+1] = -1;//can be removed?
             return min;
         }
 
         /// <summary>
         /// Remove i and its associated item
         /// </summary>
+        /// <param name="i">index i associated with item</param>
         public void Delete(int i)
         {
             if (i < 0 || i >= _maxN) throw new IndexOutOfRangeException();
             if (!Contains(i)) throw new InvalidOperationException(string.Format("Index {0} does not exist", i));
-            Exchange(_qp[i], N);
-            Swim(_qp[i]);
-            Sink(_qp[i]);
+            var k = _pq[i];
+            Exchange(k, N);
+            N--;//before swim and sink
+            Swim(k);
+            Sink(k);
 
             _keys[i] = default(TKey);
             _qp[i] = -1;
-            _pq[N] = -1;
-            N--;
+            _pq[N + 1] = -1;
         }
 
+        /// <summary>
+        /// move down larger keys
+        /// </summary>
+        /// <param name="i">heap structure index</param>
         private void Sink(int i)
         {
             while (i * 2 <= N)
             {
                 var j = i * 2;
-                if (i * 2 + 1 < N && Less(i * 2 + 1, i * 2))
+                if (j < N && Compare(j + 1, j))
                 {
                     j++;
                 }
-                if (!Less(j, i)) break;
+                if (!Compare(j, i)) break;
                 {
                     Exchange(j, i);
                 }
@@ -135,7 +158,7 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Return a minimal item
         /// </summary>
-        public TKey Min()
+        public virtual TKey Root()
         {
             return _keys[_pq[1]];
         }
@@ -143,7 +166,7 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Return a minimal item's index
         /// </summary>
-        public int MinIndex()
+        public virtual int RootIndex()
         {
             return _pq[1];
         }
@@ -151,6 +174,8 @@ namespace Lib.Common.Ds.Pq
         /// <summary>
         /// Is k associated with some item
         /// </summary>
+        /// <param name="i">index i associated with item</param>
+        /// <returns></returns>
         public bool Contains(int i)
         {
             return _qp[i] != -1;

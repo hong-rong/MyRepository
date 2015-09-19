@@ -12,11 +12,6 @@ namespace Lib.Common.Ds.Pq
             : base(initCapacity)
         { }
 
-        //protected override bool Compare(int i, int j)
-        //{
-        //    return !base.Compare(i, j);
-        //}
-
         protected override bool Compare(int i, int j)
         {
             if (_comparator == null)

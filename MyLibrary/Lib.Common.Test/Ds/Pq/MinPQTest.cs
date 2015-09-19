@@ -13,22 +13,17 @@ namespace Lib.Common.Test.Ds.Pq
         public void Initialize()
         {
             _target = new MinPQ<Distance>();
+            _target.Insert(new Distance { V = 0, Dist = 3 });
+            _target.Insert(new Distance { V = 1, Dist = 1 });
+            _target.Insert(new Distance { V = 2, Dist = 2 });
         }
 
         [TestMethod]
-        public void Inser_Test()
+        public void Insert_Test()
         {
-            var d1 = new Distance { V = 0, Dist = 3 };
-            var d2 = new Distance { V = 0, Dist = 2 };
-            var d3 = new Distance { V = 0, Dist = 1 };
-
-            _target.Insert(d1);
-            _target.Insert(d2);
-            _target.Insert(d3);
-
-            Assert.AreEqual(d3, _target.DelRoot());
-            Assert.AreEqual(d2, _target.DelRoot());
-            Assert.AreEqual(d1, _target.DelRoot());
+            Assert.AreEqual(1, _target.DelRoot().Dist);
+            Assert.AreEqual(2, _target.DelRoot().Dist);
+            Assert.AreEqual(3, _target.DelRoot().Dist);
         }
     }
 }
