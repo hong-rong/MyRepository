@@ -61,20 +61,23 @@ namespace Lib.Common.Al.Graph
             }
 
             ps.Dist[s] = 0;//start vertice
-            var pq = new MaxPQ<Distance>(ps.Dist.Length);
-            pq.Insert(new Distance { Dist = 0, V = s });
+            var pq = new IndexMaxPQ<Distance>(ps.Dist.Length);
+            for (int i = 0; i < ps.Dist.Length; i++)
+            {
+                pq.Insert(i, new Distance { V = i, Dist = ps.Dist[i] });
+            }
 
             while (!pq.IsEmpty())
             {
                 var v = pq.DelRoot();
 
-                foreach (var e in g.Adjacent(v.V))
+                foreach (var e in g.Adjacent(v))
                 {
-                    if (ps.Dist[e.V2] < ps.Dist[v.V] + e.Weight)   //longest path
+                    if (ps.Dist[e.V2] < ps.Dist[v] + e.Weight)   //longest path
                     {
-                        ps.Dist[e.V2] = ps.Dist[v.V] + e.Weight;
-                        ps.Prev[e.V2] = v.V;
-                        pq.Insert(new Distance { V = e.V2, Dist = ps.Dist[e.V2] });
+                        ps.Dist[e.V2] = ps.Dist[v] + e.Weight;
+                        ps.Prev[e.V2] = v;
+                        pq.ChangeKey(e.V2, new Distance { V = e.V2, Dist = ps.Dist[e.V2] });
                     }
                 }
             }

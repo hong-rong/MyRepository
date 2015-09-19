@@ -36,7 +36,7 @@ namespace Lib.Common.Test.Al
             var g = GraphFactory.CreateDirectedGraph49();
             var ds = Dijkstra.LongestPath(g, 0);//start vertice: A
 
-            ////previous node
+            //previous node
             //Assert.AreEqual(-1, ds.Prev[0]);//start point set to -1
             //Assert.AreEqual(2, ds.Prev[1]);
             //Assert.AreEqual(0, ds.Prev[2]);
