@@ -137,6 +137,23 @@
             return g;
         }
 
+        public static DirectedGraph CreateDirectedGraph49_Modfied()
+        {
+            var g = new DirectedGraph(5);
+
+            g.AddEdge('A', 'B', 4);
+            g.AddEdge('A', 'C', 2);
+            g.AddEdge('B', 'C', 3);
+            g.AddEdge('B', 'D', 2);
+            g.AddEdge('B', 'E', 3);
+            //AddEdge('C', 'B', 1);//remove cycle
+            g.AddEdge('C', 'D', 4);
+            g.AddEdge('C', 'E', 5);
+            g.AddEdge('E', 'D', 1);
+
+            return g;
+        }
+
         public static DirectedGraph CreateDirectedGraph39()
         {
             var g = new DirectedGraph(12);

@@ -5,7 +5,7 @@ namespace Lib.Common.Al.Graph
     public class Dijkstra
     {
         /// <summary>
-        /// Dijkstra algorithm (shortest path) based on graph g for start vertice s
+        /// Dijkstra algorithm (shortest path) based on graph g for start vertice s. Positive cycles are allowed in shortest path algorithm
         /// </summary>
         /// <param name="g">Graph for search</param>
         /// <param name="s">Start vertice</param>
@@ -46,7 +46,7 @@ namespace Lib.Common.Al.Graph
         }
 
         /// <summary>
-        /// Dijkstra algorithm (longest path) based on graph g for start vertice s
+        /// Dijkstra algorithm (longest path) based on graph g for start vertice s. Positive cycles are NOT allowed in longest path algorithm
         /// </summary>
         /// <param name="g">Graph for search</param>
         /// <param name="s">Start vertice</param>

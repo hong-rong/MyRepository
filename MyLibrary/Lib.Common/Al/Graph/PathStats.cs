@@ -21,6 +21,13 @@ namespace Lib.Common.Al.Graph
 
     public class PathStats
     {
+        //mark if a vertice is visited or not
+        private readonly bool[] _visited;
+        public bool[] Visited
+        {
+            get { return _visited; }
+        }
+
         //distance for each vertice from a start vertice
         private readonly int[] _dist;
         public int[] Dist
@@ -37,6 +44,7 @@ namespace Lib.Common.Al.Graph
 
         public PathStats(int V)
         {
+            _visited = new bool[V];
             _dist = new int[V];
             _prev = new int[V];
         }
