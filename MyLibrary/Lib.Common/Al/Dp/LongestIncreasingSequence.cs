@@ -24,16 +24,16 @@ namespace Lib.Common.Al.Dp
                     }
                 }
             }
-            
+
             g.ReverseGraph();
-            Debug.WriteLine(g);
+
+            Debug.WriteLine(Dfs.StrongConnectedComponentAlgorithm(g));
 
             var v = Dfs.GetSource(g);
 
+            g.ReverseGraph();//reverse back
             var stats = Dijkstra.LongestPath(g, v);
-
-            Debug.WriteLine(stats);
-
+            //Debug.WriteLine(stats);
             return string.Empty;
         }
     }

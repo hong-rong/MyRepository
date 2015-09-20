@@ -57,7 +57,6 @@ namespace Lib.Common.Al.Graph
         public static int GetSource(DirectedGraph g)
         {
             var ds = StrongConnectedComponentAlgorithm(g);
-
             return ds.Linearization.ToArray()[0];
         }
 

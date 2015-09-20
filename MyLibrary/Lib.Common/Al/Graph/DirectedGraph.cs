@@ -15,7 +15,7 @@ namespace Lib.Common.Al.Graph
             {
                 foreach (var e in Al[v])
                 {
-                    q.Enqueue(new Edge { V1 = e.V2, V2 = v });//reverse edge
+                    q.Enqueue(new Edge { V1 = e.V2, V2 = v, Weight = e.Weight });//reverse edge
                 }
             }
 
