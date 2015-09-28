@@ -1,9 +1,5 @@
 ﻿using Algorithm.Fundamentals.BasicProgrammingModel;
-using Algorithm.String.StringSorts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Algorithm
 {
@@ -11,7 +7,7 @@ namespace Algorithm
     {
         public static void Main()
         {
-            Exercise e = new Exercise();
+            var e = new Exercise();
             e.E117_2();
 
             //KeyIndexedCounting.Sort(KeyIndexedCounting.NameSections);

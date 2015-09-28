@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Lib.Common.Watch;
 
 namespace Lib.Common.UnitTest.Sorting
 {

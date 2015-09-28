@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{26BE9435-CC4F-4C8D-AB89-C5F78F47EDCD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B164EA6A-410E-4C02-96C9-76E047815A3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Top</RootNamespace>
-    <AssemblyName>Top</AssemblyName>
+    <RootNamespace>Lc.Test</RootNamespace>
+    <AssemblyName>Lc.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Lc9Tests.cs" />
+    <Compile Include="Lc8Tests.cs" />
+    <Compile Include="Lc4Tests.cs" />
+    <Compile Include="Lc5Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exercise\coded\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="readme.txt" />
+    <ProjectReference Include="..\LeetCode\LeetCode.csproj">
+      <Project>{31ca30e3-318d-450e-a9a1-7b467a65299d}</Project>
+      <Name>LeetCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib.Common\Lib.Common.csproj">
+      <Project>{fccdede1-088f-43a7-a4ba-ddbf526a2136}</Project>
+      <Name>Lib.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

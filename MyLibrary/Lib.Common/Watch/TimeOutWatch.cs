@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Timers;
 
-namespace Lib.Common
+namespace Lib.Common.Watch
 {
     public class TimeOutWatch : IDisposable
     {
