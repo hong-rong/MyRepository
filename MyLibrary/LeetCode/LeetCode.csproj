@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodingSummary.cs" />
+    <Compile Include="Lc15.cs" />
+    <Compile Include="Lc19.cs" />
+    <Compile Include="Lc21.cs" />
     <Compile Include="Lc7.cs" />
     <Compile Include="Lc8.cs" />
     <Compile Include="Lc4.cs" />

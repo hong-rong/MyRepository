@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lc15.cs" />
+    <Compile Include="Lc19Test.cs" />
+    <Compile Include="Lc21Tests.cs" />
     <Compile Include="Lc9Tests.cs" />
     <Compile Include="Lc8Tests.cs" />
     <Compile Include="Lc4Tests.cs" />
