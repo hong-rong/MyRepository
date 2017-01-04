@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Lib.Common.Watch
+namespace OnlineJudge
 {
     public class TimeWatch : IDisposable
     {

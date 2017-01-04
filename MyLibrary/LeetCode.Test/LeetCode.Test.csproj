@@ -54,10 +54,6 @@
       <Project>{31ca30e3-318d-450e-a9a1-7b467a65299d}</Project>
       <Name>LeetCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Lib.Common\Lib.Common.csproj">
-      <Project>{fccdede1-088f-43a7-a4ba-ddbf526a2136}</Project>
-      <Name>Lib.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

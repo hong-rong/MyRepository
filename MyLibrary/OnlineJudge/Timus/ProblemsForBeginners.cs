@@ -628,27 +628,27 @@ namespace OnlineJudge.Timus
         [TestMethod]
         public void Stone_Pile_1005_Memory_Limited_Exceeded()
         {
-            List<int> all = new List<int> { 5, 8, 13, 27, 14 };
-            List<List<int>> allSubsets = Lib.Common.Algorithm.GeneralAlgorithm.GetAllSubsets(all);
+            //List<int> all = new List<int> { 5, 8, 13, 27, 14 };
+            //List<List<int>> allSubsets = Lib.Common.Algorithm.GeneralAlgorithm.GetAllSubsets(all);
 
-            int total = all.Sum();
-            int minDiff = int.MaxValue;
-            int subSum = 0;
-            for (int i = 0; i < allSubsets.Count; i++)
-            {
-                for (int j = 0; j < allSubsets[i].Count; j++)
-                {
-                    subSum = allSubsets[i].Sum();
-                }
+            //int total = all.Sum();
+            //int minDiff = int.MaxValue;
+            //int subSum = 0;
+            //for (int i = 0; i < allSubsets.Count; i++)
+            //{
+            //    for (int j = 0; j < allSubsets[i].Count; j++)
+            //    {
+            //        subSum = allSubsets[i].Sum();
+            //    }
 
-                int diff = Math.Abs(total - 2 * subSum);
-                if (diff < minDiff)
-                {
-                    minDiff = diff;
-                }
-            }
+            //    int diff = Math.Abs(total - 2 * subSum);
+            //    if (diff < minDiff)
+            //    {
+            //        minDiff = diff;
+            //    }
+            //}
 
-            Console.WriteLine(string.Format("{0}", minDiff));
+            //Console.WriteLine(string.Format("{0}", minDiff));
         }
 
         [TestMethod]
@@ -747,7 +747,7 @@ namespace OnlineJudge.Timus
 
         public void SolveSubset<T>(List<T> set)
         {
-            List<List<T>> allSubsets = Lib.Common.Algorithm.GeneralAlgorithm.GetAllSubsets(set);
+            List<List<T>> allSubsets = GeneralAlgorithm.GetAllSubsets(set);
 
             for (int i = 0; i < allSubsets.Count; i++)
             {
@@ -767,7 +767,7 @@ namespace OnlineJudge.Timus
 
         public void SolvePermutaion(string input)
         {
-            string[] result = Lib.Common.Algorithm.GeneralAlgorithm.GetAllPermutaions(input);
+            string[] result = GeneralAlgorithm.GetAllPermutaions(input);
 
             for (int i = 0; i < result.Length; i++)
             {

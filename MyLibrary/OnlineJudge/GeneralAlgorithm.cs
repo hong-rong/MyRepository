@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lib.Common.Algorithm
+namespace OnlineJudge
 {
     public class GeneralAlgorithm
     {
